@@ -23,24 +23,31 @@ function getDataFromApiBySetId(query_set_id, callback, error) {
 }
 
 function signup(username, email, password, callback) {
+    var newUser = {'username': username, 'email': email, 'password': password};
     var settingsSignup = {
-        url: 'http://localhost:8080/users/',
-        headers: { "Authorization": "Basic " + btoa(username + ":" + email + ":" + password) },
+        url: '/signup',
+        headers: { "Authorization": "Basic " + btoa(username+ ":" + email + ":" + password) },
+        data: JSON.stringify(newUser),
+        contentType: 'application/json',
         dataType: 'JSON',
         type: 'POST',
         success: callback,
     }
-    $.ajax(settingsSignup);
+    $.ajax(settingsSignup).done(function(res) {
+        $('#signup_success').text('Your account was successfully created, please sign in');
+    });
 }
 
-function login(email, password, callback) {
+function login(username, password, callback) {
+    var existingUser = {'username': email, 'password':password}; 
     var settingsLogin = {
-        url: 'http://localhost:8080/users/me',
-        headers: { "Authorization": "Basic " + btoa(EMAIL + ":" + PASSWORD) },
+        url: '/login',
+        headers: { "Authorization": "Basic " + btoa(email + ":" + password) },
+        data: JSON.stringify(existingUser),
+        contentType: 'application/json',
         dataType: 'JSON',
         type: 'GET',
-        success: callback,
-        error: error
+        success: callback
     }
     $.ajax(settingsLogin);
 }
@@ -108,37 +115,38 @@ function searchSubmit() {
       else {
         getDataFromApiBySetId(search_text, function (item) {
           displaySearchItems([item]);
-        //function (err, textStatus, errorThrown) {
-        //   $('#js-show-error').html('<p>No results</p>');
         });
       }
     });
-    // getDataFromApiByPartId(search_text, displaySearchPart);  
   });
 }
 
-function signUpSubmit() {
+function setupSignUpSubmit() {
   $('#signup_form').submit(function(event) {
     event.preventDefault();
-    var username_input = $(this).find('#signup_username').val();
-    var email_input = $(this).find('#signup_email').val();
-    var password_input = $(this).find('#signup_password').val();
+    var username = $(this).find('#signup_username').val();
+    var email = $(this).find('#signup_email').val();
+    var password = $(this).find('#signup_password').val();
 
-    signup(username_input, email_input, password_input, function() {
-      console.log('sign up success');
+    signup(username, email, password, function() {
+      console.log('signup success');
     });
+    $('#signup_username').val('');  
+    $('#signup_email').val('');  
+    $('#signup_password').val('');  
 
   });
 }
 
-function LogInSubmit() {
+function setupLogInSubmit() {
   $('#login_form').submit(function(event) {
+          console.log('login');
     event.preventDefault();
-    var email_input_login = $(this).find('#login_email').val();
-    var password_input_login = $(this).find('#login_password').val();
+    var username_login = $(this).find('#login_email').val();
+    var password_login = $(this).find('#login_password').val();
 
-    login(email_input_login, password_input_login, function() {
-      console.log('log in success');
+    login(username_login, password_login, function() {
+      console.log('log in done')
     });
 
   });
@@ -174,8 +182,8 @@ $(function() {
   searchSubmit();
   loginPopover();
   signupModal();
-  LogInSubmit();
-  signUpSubmit();
+  setupLogInSubmit();
+  setupSignUpSubmit();
   console.log('hi');
 });
 

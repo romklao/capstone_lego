@@ -1,9 +1,13 @@
 
 const bodyParser = require('body-parser');
+const urlParser = bodyParser.urlencoded({
+    extended: true
+});
 const jsonParser = bodyParser.json();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const mongo = require('mongo');
 
 const {BasicStrategy} = require('passport-http')
 const passport = require('passport');
@@ -23,10 +27,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 
-app.use('*', function(req, res) {
-  return res.status(404).json({message: 'Not Found'});
-});
-
 const Es6Promise = require('es6-promise').polyfill();
 const IsomorphicFetch = require('isomorphic-fetch');
 
@@ -39,96 +39,137 @@ const bricklink = new Client({
     "token_secret": "B7C64E7A40654C71B885B27879A5BD69"
   });
 
+
 const strategy = new BasicStrategy(
-    (username, password, cb) => {
-        User
-            .findOne({username})
-            .exec()
-            .then(user => {
-                if (!user) {
-                    return cb(null, false, {
-                        message: 'Incorrect username'
-                    });
-                }
-                if (user.password !== password) {
-                    return cb(null, false, 'Incorrect password');
-                }
-                return cb(null, user);
-            })
-            .catch(err => cb(err))
+  (username, password, cb) => {
+    User
+      .findOne({username})
+      .exec()
+      .then(user => {
+        if (!user) {
+          return cb(null, false, {
+            message: 'Incorrect username'
+          });
+        }
+        if (user.password !== password) {
+          return cb(null, false, 'Incorrect password');
+        }
+        return cb(null, user);
+      })
+      .catch(err => cb(err))
 });
 
 passport.use(strategy);
 
-router.post('/', (req, res) => {
+
+app.post('/signup', (req, res) => {
     if (!req.body) {
-        return res.status(400).json({message: 'No request body'});
+    return res.status(400).json({message: 'No request body'});
     }
 
     if (!('username' in req.body)) {
-        return res.status(422).json({message: 'Missing field: username'});
+    return res.status(422).json({message: 'Missing field: username'});
     }
 
     let {username, password, email} = req.body;
 
     if (typeof username !== 'string') {
-        return res.status(422).json({message: 'Incorrect field type: username'});
+    return res.status(422).json({message: 'Incorrect field type: username'});
     }
 
     username = username.trim();
 
     if (username === '') {
-        return res.status(422).json({message: 'Incorrect field length: username'});
+    return res.status(422).json({message: 'Incorrect field length: username'});
+    }
+
+    if (!(password)) {
+    return res.status(422).json({message: 'Missing field: password'});
+    }
+
+    if (typeof password !== 'string') {
+    return res.status(422).json({message: 'Incorrect field type: password'});
     }
 
     password = password.trim();
 
     if (password === '') {
-        return res.status(422).json({message: 'Incorrect field length: password'});
+    return res.status(422).json({message: 'Incorrect field length: password'});
     }
 
     // check for existing user
     return User
-        .find({username})
-        .count()
-        .exec()
-        .then(count => {
-            if (count > 0) {
-                return res.status(422).json({message: 'username already taken'});
-            }
-            // if no existing user, hash password
-            return User.hashPassword(password)
+    .find({username})
+    .count()
+    .exec()
+    .then(count => {
+      if (count > 0) {
+        return res.status(422).json({message: 'username already taken'});
+      }
+      // if no existing user, hash password
+      return User.hashPassword(password)
+    })
+    .then(hash => {
+      return User
+        .create({
+          username: username,
+          password: hash,
+          email: email
         })
-        .then(hash => {
-            return User
-                .create({
-                    username: username,
-                    password: hash,
-                    emailAddress: emailAddress
-                })
-        })
-        .then(user => {
-            return res.status(201).json(user.apiRepr());
-        })
-        .catch(err => {
-            res.status(500).json({message: 'Internal server error'})
-        });
-
+    })
+    .then(user => {
+      return res.status(201).json(user.apiRepr());
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Internal server error'})
+    });
 });
 
 // never expose all your users like below in a prod application
 // we're just doing this so we have a quick way to see
 // if we're creating users. keep in mind, you can also
 // verify this in the Mongo shell.
+app.get('/login', (req, res) => {
+  return User
+    .find()
+    .exec()
+    .then(users => res.json(users.map(user => user.apiRepr())))
+    .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
+});
 
 
-passport.use(BasicStrategy);
+// NB: at time of writing, passport uses callbacks, not promises
+const basicStrategy = new BasicStrategy(function(username, password, callback) {
+  let user;
+  User
+    .findOne({username: username})
+    .exec()
+    .then(_user => {
+      user = _user;
+      if (!user) {
+        return callback(null, false, {message: 'Incorrect username'});
+      }
+      return user.validatePassword(password);
+    })
+    .then(isValid => {
+      if (!isValid) {
+        return callback(null, false, {message: 'Incorrect password'});
+      }
+      else {
+        return callback(null, user)
+      }
+    });
+});
+
+
+passport.use(basicStrategy);
 router.use(passport.initialize());
 
-router.get('/me',
-    passport.authenticate('basic', {session: false}),
-    (req, res) => res.json({user: req.user.apiRepr()})
+app.get('/login/me',
+  passport.authenticate('basic', {session: false}),
+  (req, res) => res.json({user: req.user.apiRepr()})
 );
+
 
 
 
@@ -172,28 +213,46 @@ app.get('/sets-search/:name', function(req, res) {
     console.log('hi', req.params.name);
 });
 
-app.post('/posts', (req, res) => {
-    const requiredFields = ['username', 'email', 'password'];
-    for (let i=0; i<requiredFields.length; i++) {
-        const field = requiredFields[i];
-        if (!(field in req.body)) {
-            const message = `Missing ${field} in request body`
-            console.error(message);
-            return res.status(400).send(message);
-        }
-    }
+app.get('/login/me', passport.authenticate('basic', {session: true}),
+    (req, res) => {
+        User
+           .find()
+           .exec()
+           .then(users => {
+                console.log(users);
+                res.json(users.map(user => user.apiRepr()));
+            })
+           .catch(err => {
+                console.error(err);
+                res.status(500).json({message: 'Internal server error'});
+            }); 
+    }   
+);
 
-    User 
-        .create({
-            username: request.body.username,
-            email: request.body.email
-        })
-        .then(user => res.status(201).json(user.apiRepr()))
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({error: 'Something went wrong'});
-        });
-});
+
+// app.post('/signup', (req, res) => {
+//     const requiredFields = ['username', 'email', 'password'];
+//     console.log(req.body)
+//     for (let i=0; i<requiredFields.length; i++) {
+//         const field = requiredFields[i];
+//         if (!(field in req.body)) {
+//             const message = `Missing ${field} in request body`
+//             console.error(message);
+//             return res.status(400).send(message);
+//         }
+//     }
+
+//     User 
+//         .create({
+//             username: req.body.username,
+//             email: req.body.email
+//         })
+//         .then(user => res.status(201).json(user.apiRepr()))
+//         .catch(err => {
+//             console.error(err);
+//             res.status(500).json({error: 'Something went wrong'});
+//         });
+// });
 
 app.delete('/:id', (req, res) => {
     User
@@ -203,6 +262,10 @@ app.delete('/:id', (req, res) => {
             console.log(`Deleted user with id ${req.params.ID}`);
             res.status(204).end();
         });
+});
+
+app.use('*', function(req, res) {
+  return res.status(404).json({message: 'Not Found'});
 });
 
 // referenced by both runServer and closeServer. closeServer

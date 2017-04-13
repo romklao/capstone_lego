@@ -85,6 +85,13 @@ html {
     display: inline-block;
 }
 
+#signup_success {
+    color: green;
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+
 #js-show-info {
     padding: 100px;
 }

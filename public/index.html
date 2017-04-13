@@ -26,13 +26,6 @@
                 </form>
               </div>
               <div class="col-lg-4 col-sm-4 list">
-                <!-- <nav class="main-nav">
-                  <ul>
-                    all your main menu links here
-                    <li><a class="cd-signin" href="#0">Sign in</a></li>
-                    <li><a class="cd-signup" href="#0">Sign up</a></li>
-                  </ul>
-                </nav> -->
                 <ul class="nav nav-pills pull-right">
                   <li role="presentation">
                     <a href="#" data-toggle="popover" data-trigger="click" data-placement="bottom" data-animation="true" data-popover-content="#login_popover" class="link">Log in</a>
@@ -52,22 +45,6 @@
             </div>
           </div>
           <div class="row detail" id="js-show-info">
-<!--           <div>
-                <table>
-                  <thead class="tableHead">
-                    <tr>
-                      <th>Image</th>
-                      <th>Item No</th> 
-                      <th>Qty</th>
-                      <th>Color</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody id="js-show-info-set-parts">
-                  </tbody>  
-                  
-                </table>
-              </div> -->  
           </div>
         </div> <!-- //container --> 
 
@@ -82,7 +59,7 @@
               <form id="login_form">
                 <input type="text" id="login_email" class="input_username" placeholder="Username or email address">
                 <input type="text" id="login_password" class="input_password" placeholder="Password">
-                <input type="submit" class="login_submit" name="submit">
+                <button type="submit" class="login_submit">Submit</button>
               </form>
             </div>
           </div>
@@ -93,16 +70,16 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header signup_header">
+              <div class="modal-header signup_header signup_modal">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Fill out the information below to create an account</h4>
               </div>
               <div class="modal-body">
-                <form id="signup_form" >
+                <form id="signup_form">
                   <div class="form-group">
-                    <input type="text" id="signup_username" class="form-control" placeholder="Username">
-                    <input type="text" id="signup_email" class="form-control signup_input" placeholder="Email address">
-                    <input type="text" id="signup_password" class="form-control signup_input" placeholder="Password">
+                    <input type="text" id="signup_username" class="form-control" name="username" placeholder="Username">
+                    <input type="email" id="signup_email" class="form-control signup_input" name="email" name="password" placeholder="Email address">
+                    <input type="password" id="signup_password" class="form-control signup_input" placeholder="Password">
                   </div>
                   <div class="modal-footer footer_signup">
                     <button type="button" class="btn btn-default signup_button" data-dismiss="modal">Close</button>
@@ -111,6 +88,7 @@
                 </form>
               </div>
             </div>
+            <p id="signup_success"></p>
           </div>
         </div>
 
