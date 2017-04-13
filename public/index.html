@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Capstone Project Lego</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="nav.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div class="container"> <!-- // container -->
+          <nav class="navbar-fixed-top">
+            <div class="row navbar">
+              <div class="col-lg-4 col-sm-4 logo pull-left">
+                <p class="title">BrickPro</p>
+              </div>
+              <div class="col-lg-4 col-sm-4 search_box">
+                <form id="js-search-form">
+                  <input id="js-input" type="text" class="search_input" placeholder="Search for sets">
+                  <span class="btn-group btn-group-sm">
+                    <button class="btn btn-default" type="submit">Go</button>
+                  </span>
+                </form>
+              </div>
+              <div class="col-lg-4 col-sm-4 list">
+                <!-- <nav class="main-nav">
+                  <ul>
+                    all your main menu links here
+                    <li><a class="cd-signin" href="#0">Sign in</a></li>
+                    <li><a class="cd-signup" href="#0">Sign up</a></li>
+                  </ul>
+                </nav> -->
+                <ul class="nav nav-pills pull-right">
+                  <li role="presentation">
+                    <a href="#" data-toggle="popover" data-trigger="click" data-placement="bottom" data-animation="true" data-popover-content="#login_popover" class="link">Log in</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal" class="link">Sign Up</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 landingIntro">
+              <div>
+                <p>Create your imagination with BrickPro</p>
+              </div>
+            </div>
+          </div>
+          <div class="row detail" id="js-show-info">
+<!--           <div>
+                <table>
+                  <thead class="tableHead">
+                    <tr>
+                      <th>Image</th>
+                      <th>Item No</th> 
+                      <th>Qty</th>
+                      <th>Color</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody id="js-show-info-set-parts">
+                  </tbody>  
+                  
+                </table>
+              </div> -->  
+          </div>
+        </div> <!-- //container --> 
+
+        <!-- Log in Popover  --> 
+
+        <div class="hidden" id="login_popover">
+          <div class="popover-heading login_heading">
+            Enter username and password below
+          </div>
+          <div class="popover-body">
+            <div class="input-group input-group-sm login_input">
+              <form id="login_form">
+                <input type="text" id="login_email" class="input_username" placeholder="Username or email address">
+                <input type="text" id="login_password" class="input_password" placeholder="Password">
+                <input type="submit" class="login_submit" name="submit">
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sign up Modal -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header signup_header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Fill out the information below to create an account</h4>
+              </div>
+              <div class="modal-body">
+                <form id="signup_form" >
+                  <div class="form-group">
+                    <input type="text" id="signup_username" class="form-control" placeholder="Username">
+                    <input type="text" id="signup_email" class="form-control signup_input" placeholder="Email address">
+                    <input type="text" id="signup_password" class="form-control signup_input" placeholder="Password">
+                  </div>
+                  <div class="modal-footer footer_signup">
+                    <button type="button" class="btn btn-default signup_button" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning signup_button">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

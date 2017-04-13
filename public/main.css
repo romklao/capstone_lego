@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+    font-family: Roboto;
+    margin: 0 auto;
+}
+
+html {
+    background-image: url('images/car.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.detail {
+    /*background-image: url(../public/images/star_war.jpg);
+    background-repeat: no-repeat;
+    background-position: top left;*/
+    background-color: white;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    top: 100%;
+    left: 0;
+}
+
+.landingIntro {
+    position: absolute;
+    top: 43%;
+    left: 49.5%;
+    color: white;
+    font-size: 180%;
+    text-align: center;
+
+    transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+}
+
+.login_heading {
+    width: 300px;
+}
+
+.input_username, .input_password, .login_submit {
+    border: 1px solid #C2C2C4;
+    border-radius: 3px; 
+    width: 246px;
+    height: 30px;
+}
+
+.input_username, .input_password {
+    margin-bottom: 5px;
+    font-size: 13px;
+    padding-left: 7px;
+}
+
+.login_submit {
+    background-color: #EC971F;
+    border-color: #EC971F;
+    color: white;
+}
+
+.signup_input {
+    margin-top: 10px;
+}
+
+.signup_button {
+    width: 49%;
+}
+
+.signup_header {
+    text-align: center;
+}
+
+.footer_signup {
+    width: 100%;
+    display: inline-block;
+}
+
+#js-show-info {
+    padding: 100px;
+}
+
+.imageDiv {
+    height: 570px;
+    border: 1px solid #E9EBEE;
+    border-right: none;
+    text-align: center;
+}
+
+.logo_lego {
+    width: 24px;
+}
+
+.setNum {
+    height: 8%;
+    background-color: white;
+    text-align: center;
+    color: #024887;
+    margin-bottom: 60px;
+    padding-top: 10px;
+    font-size: 17px;
+}
+
+.setDetail {
+    background-color: #F5FAFE;
+    border: 1px solid #E9EBEE;
+    font-size: 15px;
+    height: 570px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.itemImage {
+    width: 400px;
+    height: 450px;
+    max-width: 500px;
+    max-height: 500px;
+    padding-top: 70px;
+}
+
+.legoIcon {
+    width: 30px;
+}
+
+.rebrickIcon {
+    width: 19px;
+}
+
+.rebrickLink:hover {
+    text-decoration: none;
+    color: #5599FF;
+}
+
+.tableInfo {
+    width: 100%;
+}
+
+.tdTable {
+    height: 58px;
+    border: 1px solid #E9EBEE;
+    border-left: none;
+    border-right: none;
+}
+
+.tdRight {
+    width: 51%;
+    color: #757575;
+}
+
+.tdLeft {
+    width: 49%;
+    padding-left: 25px;
+}
+
+.addButton {
+    margin-bottom: 40px;
+    margin-left: 74.5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
