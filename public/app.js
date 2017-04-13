@@ -45,62 +45,6 @@ function login(email, password, callback) {
     $.ajax(settingsLogin);
 }
 
-// function getDataSetPartsFromApiBySetId(callback) {
-//     var settingsSetParts = {
-//         url: 'http://localhost:8080/sets-parts/' + query_set_id,
-//         dataType: 'JSON',
-//         type: 'GET',
-//         success: callback,
-//         error: error
-//     }
-//     $.ajax(settingsSetParts);
-// }
-
-// function getDataFromApiByPartId(query_part_id, callback, error) {
-//     var settingsPart = {
-//         url: 'http://localhost:8080/parts/' + query_part_id,
-//         dataType: 'JSON',
-//         type: 'GET',
-//         success: callback,
-//         error: error
-//     }
-//     $.ajax(settingsPart);
-// }
-
-// function getDataFromApiPrice(query_part_id, callback, error) {
-//     var settingsPartPrice = {
-//         url: 'http://localhost:8080/price/' + query_part_id,
-//         dataType: 'JSON',
-//         type: 'GET',
-//         success: callback,
-//         error: error
-//     }
-//     $.ajax(settingsPartPrice);
-// }
-
-// function displaySearchPart(data) {
-//   console.log('displaySearchPart', data);
-//   var resultElementPart = '';
-//   if(data) {
-//       if(data.part_img_url) {
-//         resultElementPart =  '<div>'
-//         resultElementPart +=   '<img src="' + data.part_img_url + '">';
-//         resultElementPart += '</div>';
-//       }
-//       if(data.part_num) {
-//         resultElementPart += '<div>';
-//         resultElementPart +=  '<p>Item No: ' + data.part_num + '</p>';
-//       }
-//       if(data.name) {
-//         resultElementPart +=  '<p>Item Name: ' + data.name + '</p>';
-//       }
-//       resultElementPart += '</div>';
-//   } else {
-//     resultElementPart += '<p>No results</p>';
-//   }
-//   $('#js-show-info').html(resultElementPart);
-// }
-
 function displaySearchItems(items) {
   console.log('displaySearchItems', items);
   var resultElement = '';
@@ -151,47 +95,6 @@ function displaySearchItems(items) {
   $('#js-show-info').html(resultElement);
 }
 
-// function displaySearchSetParts(data) {
-//   var resultElementTableHead = '';
-//   var resultElementSetParts = '';
-//   if(data.results) {
-//     console.log('data', data);
-
-//     getDataFromApiPrice();
-
-//     if(!data.results) {
-//       alert('no result');
-//         return
-//     }
-//     data.results.forEach(function(item) {
-//       console.log('items')
-//       if(item.part) {
-//         resultElementSetParts += '<tr>';
-//       }
-//       if(item.part.part_img_url) {
-//         resultElementSetParts += '<td><img src="' + item.part.part_img_url + '"></td>';
-//       }
-//       if(item.part.part_num) {
-//         resultElementSetParts += '<td>' + item.part.part_num + '</td>';
-//       }
-//       if(item.quantity) {
-//         resultElementSetParts += '<td>' + item.quantity + '</td>';
-//       }
-//       if(item.color.name) {
-//         resultElementSetParts += '<td>' + item.color.name + '</td>';
-//       }
-//       if(item.part.name) {
-//         resultElementSetParts += '<td>' + item.part.name + '</td>';
-//       }
-//     });
-//   }
-//   else {
-//     resultElementSetParts += '<p>No results</p>';
-//   }
-//   $('#js-show-info-set-parts').html(resultElementSetParts);
-
-// }
-
 function searchSubmit() {
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
@@ -213,15 +116,6 @@ function searchSubmit() {
     // getDataFromApiByPartId(search_text, displaySearchPart);  
   });
 }
-
-// function linkToListParts() {
-//   $('#js_link_set_parts').click(function() {
-//     console.log('link')
-//     $('.tableHead').show();
-//     getDataSetPartsFromApiBySetId(displaySearchSetParts);
-
-//     });
-// }
 
 function signUpSubmit() {
   $('#signup_form').submit(function(event) {
@@ -278,7 +172,6 @@ function signupModal() {
 
 $(function() {
   searchSubmit();
-  // linkToListParts();
   loginPopover();
   signupModal();
   LogInSubmit();

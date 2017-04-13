@@ -172,26 +172,6 @@ app.get('/sets-search/:name', function(req, res) {
     console.log('hi', req.params.name);
 });
 
-// app.get('/parts/:id', function(req, res) {
-//    fetch('https://rebrickable.com/api/v3/lego/parts/' + req.params.id + '/?key=f65e5ae6fb029b6e46e5b7096ae9de01&page=1&search=')
-//     .then(function(rebrickableResponse) {
-//         if (rebrickableResponse.status >= 400) {
-//             throw new Error("Bad response from server");
-//         }
-//         return rebrickableResponse.json();
-//     })
-//     .then(function(stories) {
-//         res.json(stories)
-//     });
-//     console.log('hi', req.params.id);
-// });
-
-// app.get('/price/:id', function(req, res) {
-//    bricklink.getPriceGuide('PART', req.params.id)
-//   .then(function(part){
-//     res.json(part)
-//   })
-// });
 app.post('/posts', (req, res) => {
     const requiredFields = ['username', 'email', 'password'];
     for (let i=0; i<requiredFields.length; i++) {
