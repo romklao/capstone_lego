@@ -9,9 +9,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="nav.css">
         <link rel="stylesheet" type="text/css" href="main.css">
+
     </head>
     <body>
-        <div class="container"> <!-- // container -->
+        <div class=""> <!-- // container -->
           <nav class="navbar-fixed-top">
             <div class="row navbar">
               <div class="col-lg-4 col-sm-4 logo pull-left">
@@ -19,7 +20,7 @@
               </div>
               <div class="col-lg-4 col-sm-4 search_box">
                 <form id="js-search-form">
-                  <input id="js-input" type="text" class="search_input" placeholder="Search for sets">
+                  <input id="js-input" type="text" class="search_input" placeholder="Search for lego set name or id">
                   <span class="btn-group btn-group-sm">
                     <button class="btn btn-default" type="submit">Go</button>
                   </span>
@@ -27,40 +28,87 @@
               </div>
               <div class="col-lg-4 col-sm-4 list">
                 <ul class="nav nav-pills pull-right">
-                  <li role="presentation">
-                    <a href="#" data-toggle="popover" data-trigger="click" data-placement="bottom" data-animation="true" data-popover-content="#login_popover" class="link">Log in</a>
+                  <li role="presentation" class="showWhenLoggedOut">
+                    <a href="#" data-toggle="modal" data-target="#myLoginModal" class="link">Log in</a>
                   </li>
-                  <li role="presentation">
-                    <a href="#" data-toggle="modal" data-target="#exampleModal" class="link">Sign Up</a>
+                  <li role="presentation" class="showWhenLoggedOut">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal" class="link goSignup">Sign Up</a>
+                  </li>
+                  <li class="showWhenLoggedIn">
+                    <p class="hello">Hello, <span id="helloUser"></span>!</p>
+                  </li>
+                  <li role="presentation" class="showWhenLoggedIn">
+                    <a href="#" class="link" id="showFavorites">Favorites</a>
+                  </li>
+                  <li role="presentation" class="showWhenLoggedIn">
+                    <a href="#" class="link" id="my_logout">Log Out</a>
                   </li>
                 </ul>
               </div>
             </div>
           </nav>
-          <div class="row">
+          
+          <div class="row" id="landingPage">
             <div class="col-lg-12 col-sm-12 landingIntro">
               <div>
                 <p>Create your imagination with BrickPro</p>
               </div>
             </div>
           </div>
-          <div class="row detail" id="js-show-info">
+          <div id="explain">
+            <div class="row whatWeDo1">
+              <div class="col-lg-6 col-sm-6">
+                <img src="images/lego-bricks2.jpg" class="imgWhatWeDo1">
+                <div class="introduction1">
+                  <p class="introTitle1">What is BrickPro?</p>
+                  <p class="introduct">BrickPro is used to search for a lego set by</p>
+                  <p class="introduct">a set name or id. Save a set you like in your</p>
+                  <p class="introduct">favorited list and come back later.</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <img src="images/starwars_set.jpg" class="imgWhatWeDo2">              
+                <div class="introduction2">
+                  <p class="introTitle2">Do you like a retired set?</p>
+                  <p class="introduct">You can find any lego set including </p>
+                  <p class="introduct">a retired set by using BrickPro and </p>
+                  <p class="introduct">purchase them from sources we provide.</p>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="row wrap-info" id="js-show-info">
+
+          </div>
+          <div class="row footer">
+            <div class="col-lg-12 col-xs-12">
+                <p class="footerLogo">BrickPro <span class="footerBuillder">Built by Romklao Chainuwong</span><a href="https://github.com/romklao/capstone_lego" target="_blank"><img src="images/github-logo.png" class="githubLogo"></a></p>
+            </div>
+          </div>
+          
         </div> <!-- //container --> 
 
-        <!-- Log in Popover  --> 
+        <!-- Log in Modal  --> 
 
-        <div class="hidden" id="login_popover">
-          <div class="popover-heading login_heading">
-            Enter username and password below
-          </div>
-          <div class="popover-body">
-            <div class="input-group input-group-sm login_input">
-              <form id="login_form">
-                <input type="text" id="login_email" class="input_username" placeholder="Username or email address">
-                <input type="text" id="login_password" class="input_password" placeholder="Password">
-                <button type="submit" class="login_submit">Submit</button>
-              </form>
+        <div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header login_header login_modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Fill out the information below to log in</h4>
+              </div>
+              <div class="modal-body">
+                <form id="my_login_form">
+                  <div class="form-group">
+                    <input type="email" id="login_email" class="form-control login_input" name="email" placeholder="Email address">
+                    <input type="password" id="login_password" class="form-control login_input" placeholder="Password">
+                  </div>
+                  <div class="modal-footer footer_signup">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning signup_button">Submit</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -77,18 +125,17 @@
               <div class="modal-body">
                 <form id="signup_form">
                   <div class="form-group">
-                    <input type="text" id="signup_username" class="form-control" name="username" placeholder="Username">
-                    <input type="email" id="signup_email" class="form-control signup_input" name="email" name="password" placeholder="Email address">
+                    <input type="text" id="signup_username" class="form-control signup_input" name="username" placeholder="Username">
+                    <input type="email" id="signup_email" class="form-control signup_input" name="email" placeholder="Email address">
                     <input type="password" id="signup_password" class="form-control signup_input" placeholder="Password">
                   </div>
                   <div class="modal-footer footer_signup">
-                    <button type="button" class="btn btn-default signup_button" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-warning signup_button">Submit</button>
                   </div>
                 </form>
               </div>
             </div>
-            <p id="signup_success"></p>
           </div>
         </div>
 

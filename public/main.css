@@ -1,41 +1,37 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box;    
     font-family: Roboto;
     margin: 0 auto;
 }
 
-html {
+html, body {
+    overflow-x: hidden; 
+} 
+
+#landingPage {
     background-image: url('images/car.png');
     background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-}
-
-.detail {
-    /*background-image: url(../public/images/star_war.jpg);
-    background-repeat: no-repeat;
-    background-position: top left;*/
-    background-color: white;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    position: top center;
     margin: 0 auto;
-    margin-bottom: 100px;
-    top: 100%;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
     left: 0;
+
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
 }
+
 
 .landingIntro {
     position: absolute;
-    top: 43%;
+    top: 40%;
     left: 49.5%;
     color: white;
-    font-size: 180%;
+    font-size: 200%;
     text-align: center;
 
     transform: translateX(-50%) translateY(-50%);
@@ -45,18 +41,23 @@ html {
     -o-transform: translateX(-50%) translateY(-50%);
 }
 
-.login_heading {
-    width: 300px;
+.modal-dialog {
+  width: 470px;
+  margin: 100px auto;
 }
 
-.input_username, .input_password, .login_submit {
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+.input_email, .input_password, .login_submit {
     border: 1px solid #C2C2C4;
     border-radius: 3px; 
     width: 246px;
     height: 30px;
 }
 
-.input_username, .input_password {
+.input_email, .input_password {
     margin-bottom: 5px;
     font-size: 13px;
     padding-left: 7px;
@@ -68,38 +69,31 @@ html {
     color: white;
 }
 
-.signup_input {
+.signup_input, .login_input {
     margin-top: 10px;
 }
 
-.signup_button {
-    width: 49%;
-}
-
-.signup_header {
-    text-align: center;
-}
-
-.footer_signup {
-    width: 100%;
-    display: inline-block;
-}
-
-#signup_success {
-    color: green;
-    font-size: 18px;
-    margin-top: 10px;
+.signup_header, .login_header {
     text-align: center;
 }
 
 #js-show-info {
-    padding: 100px;
+    position: absolute;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin: 0 auto;
+    margin-bottom: 130px;
+    margin-top: 140px;
+    background-color: white;
+    background-size: cover;
+    width: 100%;
+    left: 0; 
 }
 
 .imageDiv {
-    height: 570px;
+    background-color: white;
+    height: 450px;
     border: 1px solid #E9EBEE;
-    border-right: none;
     text-align: center;
 }
 
@@ -108,12 +102,13 @@ html {
 }
 
 .setNum {
-    height: 8%;
+    height: 9%;
     background-color: white;
     text-align: center;
     color: #024887;
-    margin-bottom: 60px;
-    padding-top: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 7.5px;
     font-size: 17px;
 }
 
@@ -121,17 +116,19 @@ html {
     background-color: #F5FAFE;
     border: 1px solid #E9EBEE;
     font-size: 15px;
-    height: 570px;
+    height: 450px;
     margin: 0 auto;
     padding-top: 20px;
 }
 
 .itemImage {
-    width: 400px;
-    height: 450px;
-    max-width: 500px;
-    max-height: 500px;
-    padding-top: 70px;
+    width: 280px;
+    height: 290px;
+    max-width: 350px;
+    max-height: 350px;
+    padding-top: 50px;
+    width: auto;
+    height: auto;
 }
 
 .legoIcon {
@@ -143,6 +140,15 @@ html {
 }
 
 .rebrickLink:hover {
+    text-decoration: none;
+    color: #5599FF;
+}
+
+.signupLink {
+    font-size: 17px;
+}
+
+.signupLink:hover {
     text-decoration: none;
     color: #5599FF;
 }
@@ -161,6 +167,7 @@ html {
 .tdRight {
     width: 51%;
     color: #757575;
+    border-left: none;
 }
 
 .tdLeft {
@@ -168,17 +175,118 @@ html {
     padding-left: 25px;
 }
 
-.addButton {
-    margin-bottom: 40px;
-    margin-left: 74.5%;
+tr.lastTd {
+    display: block;
+    width: 100%;
+    height: 58px;
+    margin-left: 62%;
+    margin-top: 16%;
 }
 
+.addButton {
+    display: block;
+}
 
+.buttonFavorite, .removeFavorite {
+    background-color: #D2EFFC;
+    color: #024887;
+    font-size: 13px;
+}
 
+.buttonFavorite:hover {
+    background-color: #ACE6FE;
+}
 
+#explain {
+    width: 100%;
+    background-color: #081e38; 
+    position: absolute;
+    margin: 0 auto;
+    top: 100%;
+    left: 0;
+}
 
+.introduction1, .introduction2 {
+    font-size: 18px;
+    background-color: #0b2349;
+    color: #eaeff2;
+    width: 100%;
+    border: 1px solid white;
+    padding-bottom: 15%;
 
+}
 
+.introTitle1, .introTitle2 {
+    font-size: 27px;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+
+.introduct {
+    margin: 0;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.whatWeDo1 {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8%;
+    margin-bottom: 12%;
+}
+
+.imgWhatWeDo1, .imgWhatWeDo2 {
+    display: block;
+    width: 100%;
+    height: 235px;
+    text-align: center;
+    border: 1px solid #EBEBEB;
+    border-bottom: none;
+}
+
+.footer {
+    width: 100%;
+    height:51px;
+    background-color: #0b2349; /*#09224f 0b2349 05193a*/
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0; 
+    margin: 0 auto;
+    margin-bottom: 0;
+    color: white;
+    padding-top: 11px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+}
+
+.footerLogo {
+    font-size: 18px;
+}
+
+.footerBuillder {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.githubLogo {
+    width: 19px;
+}
+
+@media (min-width: @screen-sm-min) { 
+    html, body {
+    width: 100%;
+    overflow-x: hidden; 
+    }
+
+    #landingPage {
+        height: 50%;
+    }
+}
+ 
 
 
 

@@ -2,9 +2,18 @@
     box-sizing: border-box;
     font-family: Roboto;
 }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+} 
+
 nav {
-  background-color: #121F2C;
-  height: 55px;
+  background-color: #18202D;
+  height: 58px;
   width: 100%;
 }
 
@@ -12,44 +21,89 @@ nav {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin: 0 auto;
 }
 
 .title {
   font-weight: normal;
-  font-size: 137%;
+  font-size: 20px;
   color: white;
-  /*background-color: #D01012;*/
-  width: 105px;
-  height: 33px;
-  padding-top: 2px;
-  text-align: center;
-  margin-top: 11px;
-  border-radius: 3px;
+  padding-top: 4px;
+  margin-top: 10px;
+  margin-left: 3%;
 }
 
 .link {
   color: white;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 16px;
+  margin-top: 1px;
 }
 
 .search_box {
   text-align: center;
-  padding-top: 11px;
+  padding-top: 13px;
 }
 
 .search_input {
-  background-color: #EDEDED;
-  height: 31px;
+  background-color: #EBEBEB;
+  height: 30px;
   width: 80%;
-  border: 1px solid #C2C2C4;
+  border: 1px solid #E0E0E0;
   border-radius: 3px;
-  padding-left: 5px;
+  padding-left: 7px;
   padding-bottom: 3px;
+}
+
+.search_input:hover {
+  border: 1.7px solid #365B88;
+}
+
+::-webkit-input-placeholder {  /*Chrome/Opera/Safari */
+  color: #757575;
+}
+::-moz-placeholder {  /*Firefox 19+ */
+  color: black;
+}
+:-ms-input-placeholder {  /*IE 10+ */
+  color: black;
+}
+:-moz-placeholder { /* Firefox 18-*/ 
+  color: black;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.buttonGo {
+  background-color: #33384C;
+  border: 1px solid #33384C;
+  width: 38px;
+  height: 31px;
+  color: white;
+  border-radius: 3px;
+}
+
+.buttonGo:hover {
+  background-color: #365B88;
+  border-color: #365B88;
+}
+
+.signup_button {
+  background-color: #365B88;
+  color: white; 
 }
 
 .nav {
   padding-top: 6px;
+}
+
+.hello {
+  margin-top: 10px;
+  margin-right: 15px;
+  font-size: 17px;
+  color: white;
 }
 
 
