@@ -13,7 +13,7 @@ html, body {
 
 nav {
   background-color: #18202D;
-  height: 58px;
+  height: 54px;
   width: 100%;
 }
 
@@ -27,22 +27,29 @@ nav {
 .title {
   font-weight: normal;
   font-size: 20px;
-  color: white;
   padding-top: 4px;
-  margin-top: 10px;
+  margin-top: 7px;
   margin-left: 3%;
+}
+
+.titleLink {
+  color: white;
+}
+
+.titleLink:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .link {
   color: white;
   font-weight: normal;
   font-size: 16px;
-  margin-top: 1px;
 }
 
 .search_box {
   text-align: center;
-  padding-top: 13px;
+  padding-top: 11px;
 }
 
 .search_input {
@@ -91,20 +98,46 @@ input:-webkit-autofill {
 }
 
 .signup_button {
-  background-color: #365B88;
+  background-color: #1847a5;
   color: white; 
 }
 
 .nav {
-  padding-top: 6px;
+  padding-top: 5px;
+}
+
+.welcome {
+  position: absolute;
+  top: 10%;
+  left: 82%;
+  margin: 0 auto;
+}
+
+.helloLogin {
+    margin: 0 auto;
 }
 
 .hello {
-  margin-top: 10px;
+  margin: 0 auto;
   margin-right: 15px;
-  font-size: 17px;
   color: white;
+  font-size: 15px;
 }
+
+/*.hello {
+  font-size: 15px;
+  color: grey;
+  color: #024887;
+  border: 1px solid #D2EFFC;
+  border-radius: 2px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #D2EFFC;
+
+}*/
+
 
 
 

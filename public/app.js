@@ -1,5 +1,15 @@
 'use strict'
 
+//<------------ Click to go to whatWeDo element that shows how the app work ---------->//
+
+function learnMore() {
+  $("#scroll").click(function() {
+    $('html, body').animate({
+        scrollTop: parseInt($("#explain").offset().top)
+    }, 1600);
+  });
+}
+
 //<---------- Sign up, log in and log out communicate with server ---------->//
 
 function onSignUp(username, email, password, callback) {
@@ -34,7 +44,7 @@ function onLogIn(email, password, callback) {
     }
     $.ajax(settingsLogin).then(function(res) {
         localStorage.username = res.user.username;
-        localStorage.authHeaders = settingsLogin.headers
+        localStorage.authHeaders = settingsLogin.headers.Authorization;
         console.log('localStorage.authHeaders', localStorage.authHeaders)
          window.location = '/';
     })
@@ -80,7 +90,7 @@ function setupLogInSubmit() {
     var password_login = $(this).find('#login_password').val();
 
     onLogIn(email_login, password_login, function(user) {
-      console.log('log in is done')
+      console.log('user',user)
     });
     $('.login_input').val('');
   });
@@ -97,7 +107,7 @@ function setupLogOutSubmit() {
   });
 }
 
-//<---------- Get data from rebrickable api by sending Get request to the server ---------->//
+//<---------- Get data from Rebrickable API by sending Get request to the server ---------->//
 
 function getDataFromApiBySetName(query_set_name, callback) {
     var settingsSetName = {
@@ -128,7 +138,7 @@ function addFavorite(query_set_id, callback) {
           set_num: query_set_id
         }),
         contentType: 'application/json',
-        headers: localStorage.authHeaders,
+        headers: { "Authorization": localStorage.authHeaders},
         dataType: 'JSON',
         type: 'POST',
     }
@@ -138,7 +148,8 @@ function addFavorite(query_set_id, callback) {
 function getFavorites(callback) {
     var settingsGetFavorites = {
         url: '/favorites',
-        headers: localStorage.authHeaders,
+        headers: { "Authorization": localStorage.authHeaders},
+        dataType: 'JSON',
         type: 'GET',
         success: callback
     };
@@ -159,18 +170,20 @@ function removeFavorite(query_set_id, callback) {
       });  
     }
   }
-  var settingsRemoveSet = {
-      url: '/favorites',
-      headers: localStorage.authHeaders,
-      data: JSON.stringify({
-          set_num: query_set_id
-      }),
-      contentType: 'application/json',
-      dataType: 'JSON',
-      type: 'DELETE',
-      success: callback,
-  };
-  $.ajax(settingsRemoveSet);
+  if (confirm("Are you sure you want to remove the item?")) { 
+      var settingsRemoveSet = {
+          url: '/favorites',
+          headers: { "Authorization": localStorage.authHeaders},
+          data: JSON.stringify({
+              set_num: query_set_id
+          }),
+          contentType: 'application/json',
+          dataType: 'JSON',
+          type: 'DELETE',
+          success: callback,
+      };
+      $.ajax(settingsRemoveSet);
+  }
 }
 
 
@@ -180,12 +193,12 @@ function renderItem(item, favorites) {
   var resultElement = '';
 
   if(item.set_img_url) {
-    resultElement +=  '<div class="col-lg-6 col-sm-6 imageDiv">';
+    resultElement +=  '<div class="col-lg-6 col-sm-12 imageDiv">';
     resultElement +=   `<img class="itemImage" src="${item.set_img_url}">`;
     resultElement += '</div>';
   }
   if(item.set_num) {
-    resultElement += '<div class="col-lg-6 col-sm-6 setDetail">';
+    resultElement += '<div class="col-lg-6 col-sm-12 setDetail">';
     var isFavorite = false;
     if (localStorage.authHeaders) {
       for (var favorite of favorites) {
@@ -246,42 +259,27 @@ function displaySearchItems(items, favorites) {
     items.forEach(function (item) {
       result += renderItem(item, favorites);
     });
+      result += '<div class="row js-footer">' +
+                  '<div class="col-lg-12 col-sm-12">' +
+                    '<p class="js-footerLogo">BrickPro <span class="js-footerBuilder">Built by Romklao Chainuwong</span>' +
+                      '<a href="https://github.com/romklao/capstone_lego" target="_blank"><img src="images/github-logo.png" class="js-githubLogo"></a>' +
+                    '</p>' +
+                  '</div>' +
+                '</div>'
   } else {
     result += '<p>No results</p>';
   }
   $('#js-show-info').append(result);
 }
 
-//<------------- Event listener to show favorite list ------------->// 
-
-function setupShowFavorites() {
-  $('#showFavorites').click(function(event) {
-    event.preventDefault();
-    $('#explain').hide();
-    $('#landingPage').hide();
-    $('#js-show-info').show();
-    $('#js-show-info').html('');
-
-    getFavorites(function(favorites) {
-        favorites.forEach(function(favorite) {
-          getDataFromApiBySetId(favorite.set_num, function(item) {
-            console.log('ITEM', item);
-            displaySearchItems([item], favorites);
-          });
-        }); 
-    });  
-  });  
-}
-
-//<---------- Event listener for searchibg a lego set to display data ---------->//
+//<---------- Event listener for searching a lego set to display data ---------->//
 
 function searchSubmit() {
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
     $('#explain').hide();
-    $('#footerLogo').show();
+    $('.footer').hide();
     $('#landingPage').hide();
-    $('#js-show-info').show();
     $('#js-show-info').html('');
     
     var search_text = $(this).find('#js-input').val();
@@ -302,6 +300,29 @@ function searchSubmit() {
     });
   });
 }
+
+//<------------- Event listener click to show favorite list ------------->// 
+
+function setupShowFavorites() {
+  $('#showFavorites').click(function(event) {
+    event.preventDefault();
+    $('#explain').hide();
+    $('#landingPage').hide();
+    $('.footer').hide();
+    $('#js-show-info').html('');
+
+    getFavorites(function(favorites) {
+        favorites.forEach(function(favorite) {
+          getDataFromApiBySetId(favorite.set_num, function(item) {
+            console.log('ITEM', item);
+            displaySearchItems([item], favorites);
+          });
+        }); 
+    });  
+  });  
+}
+
+//<---------------- Show and hide elements when log in or log out -------------->//
 
 function switchLogInLogOut() {
   if (localStorage.authHeaders) {
@@ -344,6 +365,7 @@ function signupModal() {
 //<------------ document.ready ------------>//
 
 $(function() {
+  learnMore();
   searchSubmit();
   loginModal();  
   signupModal();

@@ -118,9 +118,10 @@ app.post('/signup', (req, res) => {
 
 // NB: at time of writing, passport uses callbacks, not promises
 
-const basicStrategy = new BasicStrategy(function(username, password, callback) {
+const basicStrategy = new BasicStrategy({ disableBasicChallenge: true },function(username, password, callback) {
     console.log('username', username, 'password', password);
   let user;
+
   User
     .findOne({ $or:[{'username': username}, {'email':username}] })
     .exec()
@@ -218,7 +219,7 @@ app.post('/favorites',
     }
 );
 
-// Get favorite list using get request //
+//Get favorite list using get request //
 
 app.get('/favorites',
     passport.authenticate(
@@ -230,6 +231,26 @@ app.get('/favorites',
         res.json(req.user.favorites);
     }
 );
+
+// app.get('/favorites',
+//     passport.authenticate(
+//         'basic',
+//         {session: false}
+//     ),
+//     (req, res) => {
+//         User
+//             .findById(
+//             req.user._id,
+//             {$get: {"favorites": {set_num: req.body.set_num}}},
+//             {safe: true, upsert: true, new : true},
+//             function(err, model) {
+//                 console.log(err);
+//                 res.json(req.user.favorites);
+//         });
+        
+//     }
+// );
+
 
 // Delete favorite item by id //
 

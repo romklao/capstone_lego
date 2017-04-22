@@ -9,12 +9,13 @@ html, body {
 } 
 
 #landingPage {
-    background-image: url('images/car.png');
+    background-image: url('images/car.jpg');
     background-repeat: no-repeat;
-    position: top center;
     margin: 0 auto;
     padding: 0;
     position: absolute;
+    width: auto;
+    height: auto;
     width: 100%;
     height: 100%;
     top: 0;
@@ -26,19 +27,43 @@ html, body {
 }
 
 
-.landingIntro {
+.landingIntro, #scroll, #startScroll {
     position: absolute;
-    top: 40%;
-    left: 49.5%;
     color: white;
-    font-size: 200%;
     text-align: center;
-
     transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -o-transform: translateX(-50%) translateY(-50%);
+}
+
+.landingIntro {
+    top: 40%;
+    font-size: 200%;
+    left: 49.5%;
+}
+
+#scroll {
+    top: 91%;
+    left: 51%;
+}
+
+.scrollButton {
+    width: 12%;
+    border-radius: 50%;
+}
+
+.scrollButton:hover {
+    transition: 0.5s ease;
+    transform: scale(1.25);
+}
+
+#startScroll {
+    top: 86.5%;
+    left: 51.2%;
+    font-size: 122%;
+    padding-right: 3px;
 }
 
 .modal-dialog {
@@ -82,7 +107,6 @@ input:-webkit-autofill {
     padding-left: 100px;
     padding-right: 100px;
     margin: 0 auto;
-    margin-bottom: 130px;
     margin-top: 140px;
     background-color: white;
     background-size: cover;
@@ -119,6 +143,7 @@ input:-webkit-autofill {
     height: 450px;
     margin: 0 auto;
     padding-top: 20px;
+    margin-bottom: 4%;
 }
 
 .itemImage {
@@ -202,6 +227,7 @@ tr.lastTd {
     background-color: #081e38; 
     position: absolute;
     margin: 0 auto;
+    padding-bottom: 3%;
     top: 100%;
     left: 0;
 }
@@ -210,9 +236,10 @@ tr.lastTd {
     font-size: 18px;
     background-color: #0b2349;
     color: #eaeff2;
-    width: 100%;
+    width: 95%;
     border: 1px solid white;
     padding-bottom: 15%;
+    border-top-color: #0b2349;
 
 }
 
@@ -229,28 +256,66 @@ tr.lastTd {
     padding-right: 6%;
 }
 
+.introductSignUp {
+    color: #76c2f2;
+}
+
+.introductSignUp:hover {
+    text-decoration: none;
+    color: #448eea;
+}
+
+.wrapwhatWeDo1 {
+    margin-right: 0px;
+}
+
 .whatWeDo1 {
-    width: 70%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 8%;
-    margin-bottom: 12%;
+    margin-top: 5%;
+    margin-bottom: 4%;
 }
 
 .imgWhatWeDo1, .imgWhatWeDo2 {
     display: block;
-    width: 100%;
-    height: 235px;
+    width: 95%;
+    height: 300px;
+    margin-top: 8%;
     text-align: center;
     border: 1px solid #EBEBEB;
     border-bottom: none;
 }
 
+.joinNow {
+    margin-bottom: 0%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.joinButton {
+    text-decoration: none;
+    background-color: #13a9ef;
+    color: white;
+    border: 1px solid #13a9ef;
+    border-radius: 3px;
+    padding: 8px 19px 8px 19px;
+}
+
+a:hover, a:active, a:visited, a:focus  {
+    text-decoration: none;
+}
+
+.joinButton:hover {
+    color: #0b2349;
+}
+
 .footer {
+    position: absolute;
     width: 100%;
-    height:51px;
+    height:52px;
     background-color: #0b2349; /*#09224f 0b2349 05193a*/
-    position: fixed;
+    top: 100%;
     bottom: 0;
     right: 0;
     left: 0; 
@@ -259,33 +324,50 @@ tr.lastTd {
     color: white;
     padding-top: 11px;
     padding-bottom: 8px;
-    padding-left: 12px;
+    padding-left: 13px;
 }
 
-.footerLogo {
+.js-footer {
+    position: absolute;
+    width: 100%;
+    height:52px;
+    background-color: #0b2349; /*#09224f 0b2349 05193a*/
+    bottom: 0;
+    right: 0;
+    left: 0; 
+    margin: 0 auto;
+    margin-bottom: 0;
+    margin-top: 4%;
+    color: white;
+    top: 100%;
+    padding-top: 11px;
+    padding-bottom: 8px;
+    padding-left: 13px;
+}
+
+.footerLogo, .js-footerLogo {
     font-size: 18px;
 }
 
-.footerBuillder {
+.footerBuilder, .js-footerBuilder {
     font-size: 15px;
     margin-left: 10px;
     margin-right: 5px;
 }
 
-.githubLogo {
+.githubLogo, .js-githubLogo {
     width: 19px;
 }
 
-@media (min-width: @screen-sm-min) { 
-    html, body {
-    width: 100%;
-    overflow-x: hidden; 
-    }
-
-    #landingPage {
-        height: 50%;
-    }
+.githubLogo:hover, .js-githubLogo:hover {
+    transition: 0.5s ease;
+    transform: scale(1.25);
 }
+
+
+
+
+
  
 
 
