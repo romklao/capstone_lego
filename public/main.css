@@ -236,9 +236,9 @@ tr.lastTd {
     font-size: 18px;
     background-color: #0b2349;
     color: #eaeff2;
-    width: 95%;
+    width: 93%;
     border: 1px solid white;
-    padding-bottom: 15%;
+    padding-bottom: 13%;
     border-top-color: #0b2349;
 
 }
@@ -273,14 +273,14 @@ tr.lastTd {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 5%;
-    margin-bottom: 4%;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 .imgWhatWeDo1, .imgWhatWeDo2 {
     display: block;
-    width: 95%;
-    height: 300px;
+    width: 93%;
+    height: 275px;
     margin-top: 8%;
     text-align: center;
     border: 1px solid #EBEBEB;
@@ -288,7 +288,6 @@ tr.lastTd {
 }
 
 .joinNow {
-    margin-bottom: 0%;
     text-align: center;
     margin: 0 auto;
 }

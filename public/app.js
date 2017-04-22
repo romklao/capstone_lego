@@ -6,7 +6,7 @@ function learnMore() {
   $("#scroll").click(function() {
     $('html, body').animate({
         scrollTop: parseInt($("#explain").offset().top)
-    }, 1600);
+    }, 1400);
   });
 }
 
