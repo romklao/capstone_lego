@@ -15,18 +15,10 @@
         <!-- // container -->
           <nav class="navbar-fixed-top">
             <div class="row navbar">
-              <div class="col-lg-4 col-sm-6 logo pull-left">
+              <div class="col-lg-6 col-sm-6 logo pull-left">
                 <p class="title"><a href="/" class="titleLink">BrickPro</a></p>
               </div>
-              <div class="col-lg-4 col-sm-6 search_box">
-                <form id="js-search-form">
-                  <input id="js-input" type="text" class="search_input" placeholder="Search for lego set name or id">
-                  <span class="btn-group btn-group-sm">
-                    <button class="btn btn-default" type="submit">Go</button>
-                  </span>
-                </form>
-              </div>
-              <div class="col-lg-4 col-sm-6 list">
+              <div class="col-lg-6 col-sm-6 list">
                 <ul class="nav nav-pills pull-right">
                   <li role="presentation" class="showWhenLoggedOut">
                     <a href="/login" data-toggle="modal" data-target="#myLoginModal" class="link">Log in</a>
@@ -69,6 +61,16 @@
             </div>
           </div>
           <div id="explain">
+            <div class="row search_wrap">
+              <div class="col-lg-12 col-sm-12 search_box">
+                <form id="js-search-form">
+                  <input id="js-input" type="text" class="search_input" placeholder="Search for lego set name or id">
+                  <span class="btn-group btn-group-sm">
+                    <button class="btn buttonGo" type="submit">Go</button>
+                  </span>
+                </form>
+              </div>
+            </div>
             <div class="row whatWeDo1">
               <div class="col-lg-6 col-sm-12-6 wrapwhatWeDo1">
                 <img src="images/lego.jpg" class="imgWhatWeDo1">
