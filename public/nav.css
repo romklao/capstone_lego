@@ -13,7 +13,7 @@ html, body {
 
 nav {
   background-color: #18202D;
-  height: 54px;
+  height: 56px;
   width: 100%;
 }
 
@@ -44,35 +44,31 @@ nav {
 .link {
   color: white;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .search_wrap {
   margin: 0 auto;
 }
 
-.search_box {
+/*.search_box {
   text-align: center;
   padding-top: 11px;
-}
+}*/
 
-.search_input {
+/*.search_input {
   background-color: #2d548e;
   height: 34px;
-  width: 20%;
+  width: 27%;
   border: 1px solid #2d548e;
   border-radius: 3px;
   padding-left: 7px;
   padding-bottom: 3px;
   margin-top: 20px;
-}
-
-.search_input:hover {
-  border: 1.7px solid #365B88;
-}
+}*/
 
 ::-webkit-input-placeholder {  /*Chrome/Opera/Safari */
-  color: white;
+  color: #5879aa;
 }
 ::-moz-placeholder {  /*Firefox 19+ */
   color: white;
@@ -89,17 +85,19 @@ input:-webkit-autofill {
 }
 
 .buttonGo {
-  background-color: #2d548e;
-  border: 1px solid #2d548e;
+  background-color: #365B88;
+  border: 1px solid #365B88;
   width: 38px;
   height: 34px;
   color: white;
+  font-size: 14px;
   border-radius: 3px;
 }
 
 .buttonGo:hover {
   background-color: #365B88;
   border-color: #365B88;
+  color: white;
 }
 
 .signup_button {
@@ -108,14 +106,7 @@ input:-webkit-autofill {
 }
 
 .nav {
-  padding-top: 5px;
-}
-
-.welcome {
-  position: absolute;
-  top: 10%;
-  left: 82%;
-  margin: 0 auto;
+  padding-top: 4px;
 }
 
 .helloLogin {
@@ -124,10 +115,40 @@ input:-webkit-autofill {
 
 .hello {
   margin: 0 auto;
-  margin-right: 15px;
+  margin-right: 16px;
   color: white;
-  font-size: 15px;
+  font-size: 17px;
+  margin-bottom: 0;
 }
+
+.title, #js-search-form {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#js-search-form {
+  padding-top: 10px;
+  margin-left: 25px;
+}
+
+input[type=text] {
+    width: 100px;
+    height: 34px;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    margin: 0 auto;
+    font-size: 14px;
+    background-color: white;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 300px;
+}
+
 
 
 

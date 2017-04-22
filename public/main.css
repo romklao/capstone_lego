@@ -228,6 +228,7 @@ tr.lastTd {
     position: absolute;
     margin: 0 auto;
     padding-bottom: 3%;
+    padding-top: 3%;
     top: 100%;
     left: 0;
 }
