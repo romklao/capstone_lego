@@ -6,7 +6,7 @@ function learnMore() {
   $("#scroll").click(function() {
     $('html, body').animate({
         scrollTop: parseInt($("#explain").offset().top)
-    }, 1400);
+    }, 1200);
   });
 }
 
@@ -192,13 +192,14 @@ function removeFavorite(query_set_id, callback) {
 function renderItem(item, favorites) {
   var resultElement = '';
 
-  if(item.set_img_url) {
-    resultElement +=  '<div class="col-lg-6 col-sm-12 imageDiv">';
-    resultElement +=   `<img class="itemImage" src="${item.set_img_url}">`;
+  if(item.set_img_url && item.set_num) {
+    resultElement +=  '<div class="col-lg-6 col-sm-6 imageDiv">' +
+                        `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num}</span>` +
+                        `<p><img class="itemImage" src="${item.set_img_url}"></p>`;
     resultElement += '</div>';
   }
   if(item.set_num) {
-    resultElement += '<div class="col-lg-6 col-sm-12 setDetail">';
+    resultElement += '<div class="col-lg-6 col-sm-6 setDetail">';
     var isFavorite = false;
     if (localStorage.authHeaders) {
       for (var favorite of favorites) {
@@ -209,7 +210,8 @@ function renderItem(item, favorites) {
       }
       if (isFavorite) {
         resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' +
-                          `<button class="btn btn removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button></span>`;
+                          `<button class="btn btn removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button></span>` +
+                          '<span class="glyphicon glyphicon-heart heartFav"></span>';
       } else {
       resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' + 
                           `<button class="btn buttonFavorite" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +

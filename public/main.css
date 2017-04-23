@@ -18,6 +18,8 @@ html, body {
     height: auto;
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     top: 0;
     left: 0;
 
@@ -45,7 +47,7 @@ html, body {
 }
 
 #scroll {
-    top: 91%;
+    top: 93%;
     left: 51%;
 }
 
@@ -60,7 +62,7 @@ html, body {
 }
 
 #startScroll {
-    top: 86.5%;
+    top: 88%;
     left: 51.2%;
     font-size: 122%;
     padding-right: 3px;
@@ -114,10 +116,28 @@ input:-webkit-autofill {
     left: 0; 
 }
 
+.setNumImg {
+    position: absolute;
+    left: 2%;
+    top: 1.5%;
+    color: #154896;
+    font-size: 16px;
+}
+
+.heartFav {
+    position: absolute;
+    top: 2%;
+    right: 102%;
+    font-size: 20px;
+    color: #db1a4d;
+}
+
 .imageDiv {
+    margin: auto;
     background-color: white;
     height: 450px;
-    border: 1px solid #0B2349;
+    border: 1px solid #c0d0e8;
+    border-right-color: #dce7f7;
     text-align: center;
 }
 
@@ -138,7 +158,8 @@ input:-webkit-autofill {
 
 .setDetail {
     background-color: #F5FAFE;
-    border: 1px solid #0B2349;
+    border: 1px solid #c0d0e8;
+    border-left-color: #dce7f7;
     font-size: 15px;
     height: 450px;
     margin: 0 auto;
@@ -147,13 +168,9 @@ input:-webkit-autofill {
 }
 
 .itemImage {
-    width: 280px;
-    height: 290px;
-    max-width: 350px;
-    max-height: 350px;
-    padding-top: 50px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 400px;
+    margin-top: 25px;
 }
 
 .legoIcon {
@@ -190,14 +207,14 @@ input:-webkit-autofill {
 }
 
 .tdRight {
-    width: 51%;
+    width: 50%;
     color: #757575;
     border-left: none;
 }
 
 .tdLeft {
-    width: 49%;
-    padding-left: 25px;
+    width: 50%;
+    padding-left: 30px;
 }
 
 tr.lastTd {
@@ -239,7 +256,7 @@ tr.lastTd {
     color: #eaeff2;
     width: 93%;
     border: 1px solid white;
-    padding-bottom: 13%;
+    padding-bottom: 11%;
     border-top-color: #0b2349;
 
 }
@@ -247,8 +264,8 @@ tr.lastTd {
 .introTitle1, .introTitle2 {
     font-size: 27px;
     text-align: center;
-    margin-top: 10%;
-    margin-bottom: 15%;
+    margin-top: 8%;
+    margin-bottom: 13%;
 }
 
 .introduct {
@@ -258,12 +275,12 @@ tr.lastTd {
 }
 
 .introductSignUp {
-    color: #76c2f2;
+    color: #13a9ef;
 }
 
 .introductSignUp:hover {
     text-decoration: none;
-    color: #448eea;
+    color: #154896;
 }
 
 .wrapwhatWeDo1 {
@@ -281,6 +298,8 @@ tr.lastTd {
     display: block;
     width: 93%;
     height: 275px;
+    max-height: 295px;
+    max-width: 93%;
     margin-top: 8%;
     text-align: center;
     border: 1px solid #EBEBEB;
@@ -298,7 +317,7 @@ tr.lastTd {
     color: white;
     border: 1px solid #13a9ef;
     border-radius: 3px;
-    padding: 8px 19px 8px 19px;
+    padding: 10px 26px 10px 26px;
 }
 
 a:hover, a:active, a:visited, a:focus  {
@@ -306,7 +325,9 @@ a:hover, a:active, a:visited, a:focus  {
 }
 
 .joinButton:hover {
-    color: #0b2349;
+    background-color: #154896;
+    border: 1px solid #154896;
+    color: white;
 }
 
 .footer {
