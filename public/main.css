@@ -235,6 +235,10 @@ tr.lastTd {
     font-size: 13px;
 }
 
+.removeFavorite:hover {
+    background-color: #ACE6FE;
+}
+
 .buttonFavorite:hover {
     background-color: #ACE6FE;
 }
