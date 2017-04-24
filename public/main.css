@@ -4,6 +4,14 @@
     margin: 0 auto;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+} 
+
 #landingPage {
     background-image: url('images/car.jpg');
     background-repeat: no-repeat;
@@ -32,7 +40,7 @@
 
 .landingIntro {
     top: 40%;
-    font-size: 200%;
+    font-size: 30px;
     left: 49.5%;
 }
 
@@ -332,7 +340,7 @@ a:hover, a:active, a:visited, a:focus  {
     color: white;
 }
 
-.footer {
+.footer, .js-footer {
     position: absolute;
     width: 100%;
     height:52px;
@@ -346,25 +354,11 @@ a:hover, a:active, a:visited, a:focus  {
     color: white;
     padding-top: 11px;
     padding-bottom: 8px;
-    padding-left: 13px;
+    padding-left: 18px;
 }
 
 .js-footer {
-    position: absolute;
-    width: 100%;
-    height:52px;
-    background-color: #0b2349; /*#09224f 0b2349 05193a*/
-    bottom: 0;
-    right: 0;
-    left: 0; 
-    margin: 0 auto;
-    margin-bottom: 0;
     margin-top: 4%;
-    color: white;
-    top: 100%;
-    padding-top: 11px;
-    padding-bottom: 8px;
-    padding-left: 13px;
 }
 
 .footerLogo, .js-footerLogo {
