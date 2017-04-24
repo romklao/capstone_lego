@@ -148,6 +148,11 @@ function addFavorite(query_set_id, callback) {
 }
 
 function getFavorites(callback) {
+  console.log('localStorage', localStorage);
+  if (!('authHeaders' in localStorage) || !localStorage['authHeaders']) {
+    callback([]);
+    return
+  }
     var settingsGetFavorites = {
         url: '/favorites',
         headers: { "Authorization": localStorage.authHeaders},

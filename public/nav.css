@@ -5,7 +5,7 @@
 
 nav {
   background-color: #18202D;
-  height: 56px;
+  min-height: 56px;
   width: 100%;
 }
 
