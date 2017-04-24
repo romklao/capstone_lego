@@ -76,7 +76,7 @@ input:-webkit-autofill {
 .buttonGo {
   background-color: #13a9ef;
   border: 1px solid #13a9ef;
-  width: 38px;
+  width: 41px;
   height: 34px;
   color: white;
   font-size: 14px;
@@ -124,7 +124,7 @@ input:-webkit-autofill {
 }
 
 .search_input:focus {
-    width: 300px;
+    width: 290px;
 }
 
 
