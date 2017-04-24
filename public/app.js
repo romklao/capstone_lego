@@ -126,7 +126,9 @@ function getDataFromApiBySetId(query_set_id, callback) {
         type: 'GET',
         success: callback,
     }
-    $.ajax(settingsSetInfo);
+    $.ajax(settingsSetInfo).fail(function(err) {
+        callback(null);
+    });
 }
 
 //<---------- Add, get and remove favorite sets by communicating to server ---------->//
@@ -204,7 +206,7 @@ function renderItem(item, favorites) {
     }
 
     if(item.set_img_url) {
-      resultElement +=  '<div class="col-md-6 col-sm-6 imageDiv">' +
+      resultElement +=  '<div class="col-md-6 col-sm-6 col-xs-12 imageDiv">' +
                           `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num}</span>` +
                           `<p><img class="itemImage" src="${item.set_img_url}"></p>`;
       if (isFavorite) {
@@ -213,7 +215,7 @@ function renderItem(item, favorites) {
       resultElement += '</div>';
     }
 
-    resultElement += '<div class="col-md-6 col-sm-6 setDetail">';
+    resultElement += '<div class="col-md-6 col-sm-6 col-xs-12 setDetail">';
 
     if (isFavorite) {
       resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' +
@@ -285,6 +287,8 @@ function displaySearchItems(items, favorites) {
 function searchSubmit() {
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
+    var resultError = '';
+
     $('#explain').hide();
     $('.footer').hide();
     $('#landingPage').hide();
@@ -300,8 +304,16 @@ function searchSubmit() {
         } 
         else {
           getDataFromApiBySetId(search_text, function (item) {
-            displaySearchItems([item], favorites);
-            console.log('ITEM', item)
+            if(item) {
+              displaySearchItems([item], favorites);
+              console.log('ITEM', item)
+            }
+            else {
+              resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
+                                '<p class="errMsg">No results!</p>' +
+                              '</div>';
+              $('#js-show-info').html(resultError);
+            }
           });
         }
       });

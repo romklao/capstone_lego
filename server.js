@@ -162,25 +162,17 @@ app.get('/sets/:id', function(req, res) {
    fetch('https://rebrickable.com/api/v3/lego/sets/'+ req.params.id +'/?key=f65e5ae6fb029b6e46e5b7096ae9de01&page=1')
     .then(function(rebrickableResponse) {
         if (rebrickableResponse.status >= 400) {
-            throw new Error("Bad response from server");
+            //throw new Error("Bad response from server");
+            return null;
         }
         return rebrickableResponse.json();
     })
     .then(function(stories) {
-        res.json(stories);
-    });
-})
-
-app.get('/sets-parts/:id', function(req, res) {
-   fetch('https://rebrickable.com/api/v3/lego/sets/'+ req.params.id +'/parts/?key=f65e5ae6fb029b6e46e5b7096ae9de01&page=1')
-    .then(function(rebrickableResponse) {
-        if (rebrickableResponse.status >= 400) {
-            throw new Error("Bad response from server");
+        if (stories) {
+            res.json(stories);
+        } else {
+            res.status(404).json({message: 'Item not found'})
         }
-        return rebrickableResponse.json();
-    })
-    .then(function(stories) {
-        res.json(stories);
     });
 })
 
