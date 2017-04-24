@@ -98,7 +98,7 @@ input:-webkit-autofill {
 .setNumImg {
     position: absolute;
     left: 2%;
-    top: 1.5%;
+    top: 2%;
     color: #154896;
     font-size: 16px;
 }
@@ -115,7 +115,7 @@ input:-webkit-autofill {
     margin: auto;
     background-color: white;
     height: 450px;
-    padding-top: 3%;
+    padding-top: 4.5%;
     border: 1px solid #c0d0e8;
     border-right-color: #dce7f7;
     text-align: center;
@@ -123,7 +123,7 @@ input:-webkit-autofill {
 
 .itemImage {
     max-width: 100%;
-    max-height: 400px;
+    max-height: 390px;
 }
 
 .logo_lego {

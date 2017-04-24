@@ -207,8 +207,9 @@ function renderItem(item, favorites) {
 
     if(item.set_img_url) {
       resultElement +=  '<div class="col-md-6 col-sm-6 col-xs-12 imageDiv">' +
-                          `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num}</span>` +
+                          `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num} ${item.name}</span>` +
                           `<p><img class="itemImage" src="${item.set_img_url}"></p>`;
+                          // `<p class="imgName">${item.name}</p>`;
       if (isFavorite) {
         resultElement += '<span class="glyphicon glyphicon-heart heartFav"></span>';
       }
