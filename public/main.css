@@ -325,6 +325,7 @@ tr.lastTd {
     text-decoration: none;
     background-color: #13a9ef;
     color: white;
+    font-size: 16px;
     border: 1px solid #13a9ef;
     border-radius: 3px;
     padding: 10px 26px 10px 26px;
