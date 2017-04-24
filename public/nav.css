@@ -76,8 +76,7 @@ input:-webkit-autofill {
 .buttonGo {
   background-color: #13a9ef;
   border: 1px solid #13a9ef;
-  width: 41px;
-  height: 34px;
+  padding: 5px 11px 7px 11px;
   color: white;
   font-size: 14px;
   border-radius: 3px;
