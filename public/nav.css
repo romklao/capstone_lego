@@ -109,11 +109,10 @@ input:-webkit-autofill {
 
 .search_input {
     width: 170px;
-    height: 34px;
     border: 2px solid white;
     border-radius: 4px;
-    padding-bottom: 2px;
-    padding-top: 1px;
+    padding-top: 4px;
+    padding-bottom: 6px;
     padding-left: 10px;
     margin: 0 auto;
     font-size: 14px;
