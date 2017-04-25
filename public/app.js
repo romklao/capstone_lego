@@ -211,17 +211,17 @@ function renderItem(item, favorites) {
     }
 
     if(item.set_img_url) {
-      resultElement +=  '<div class="col-md-6 col-sm-6 col-xs-12 imageDiv">' +
+      resultElement +=  '<div class="col-md-6 col-sm-12 col-xs-12 imageDiv">' +
                           `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num} ${item.name}</span>` +
                           `<p><img class="itemImage" src="${item.set_img_url}"></p>`;
-                          // `<p class="imgName">${item.name}</p>`;
+
       if (isFavorite) {
         resultElement += '<span class="glyphicon glyphicon-heart heartFav"></span>';
       }
       resultElement += '</div>';
     }
 
-    resultElement += '<div class="col-md-6 col-sm-6 col-xs-12 setDetail">';
+    resultElement += '<div class="col-md-6 col-sm-12 col-xs-12 setDetail">';
 
     if (isFavorite) {
       resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' +
