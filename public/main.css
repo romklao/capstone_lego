@@ -368,10 +368,11 @@ a:hover, a:active, a:visited, a:focus  {
 @media (max-width: 500px) {
     .imageDiv {
         height: auto;
+        padding-top: 9%;
     }
 
     #js-show-info {
-        margin-top: 60%;
+        margin-top: 50%;
     }
 
     .footer, .js-footer {
@@ -387,7 +388,10 @@ a:hover, a:active, a:visited, a:focus  {
         margin-bottom: 8%;
     }
 
-    
+    .modal-dialog {
+        width: 400px;
+        margin: 80px auto;
+    }
 
 }
 
