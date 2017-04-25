@@ -125,6 +125,18 @@ input:-webkit-autofill {
     width: 290px;
 }
 
+@media (max-width: 500px) {
+    #js-search-form {
+      margin-left: 10px;
+    }
+
+    .nav {
+      float: left !important;
+      margin-left: -5px;
+    }
+
+}
+
 
 
 
