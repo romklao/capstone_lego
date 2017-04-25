@@ -13,7 +13,7 @@ const passport = require('passport');
 const logout = require('express-passport-logout');
 const router = express.Router();
 const {User} = require('./models');
-const {PORT, DATABASE_URL} = require('./config');
+const {PORT, DATABASE_URL, REBRICKABLE_KEY} = require('./config');
 
 const app = express();
 
@@ -34,7 +34,7 @@ const IsomorphicFetch = require('isomorphic-fetch');
 // When name routes, we have to name them differently. 
 // For example, sets/:id, sets/favorites this will not work when we req or res data
 // since they are the same name. We should name for example sets/:id and another route can be /favorites
-// Remember this
+// Remember this!
 
 //<------------------- Sign up, log in  and log out routes -------------------->//
 
@@ -159,7 +159,7 @@ app.get('/logout', logout());
 //<--------------- Retrive data from rebrickcable API by using GET request --------------->//
 
 app.get('/sets/:id', function(req, res) {
-   fetch('https://rebrickable.com/api/v3/lego/sets/'+ req.params.id +'/?key=f65e5ae6fb029b6e46e5b7096ae9de01&page=1')
+   fetch('https://rebrickable.com/api/v3/lego/sets/'+ req.params.id + `/?key=${REBRICKABLE_KEY}&page=1`)
     .then(function(rebrickableResponse) {
         if (rebrickableResponse.status >= 400) {
             //throw new Error("Bad response from server");
@@ -177,7 +177,7 @@ app.get('/sets/:id', function(req, res) {
 })
 
 app.get('/sets-search/:name', function(req, res) {
-   fetch('https://rebrickable.com/api/v3/lego/sets/?key=f65e5ae6fb029b6e46e5b7096ae9de01&page=1&search='+ req.params.name)
+   fetch(`https://rebrickable.com/api/v3/lego/sets/?key=${REBRICKABLE_KEY}&page=1&search=` + req.params.name)
     .then(function(rebrickableResponse) {
         if (rebrickableResponse.status >= 400) {
             throw new Error("Bad response from server");
