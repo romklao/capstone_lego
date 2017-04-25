@@ -368,7 +368,7 @@ a:hover, a:active, a:visited, a:focus  {
 @media (max-width: 500px) {
     .imageDiv {
         height: auto;
-        padding-top: 9%;
+        padding-top: 15px;
     }
 
     #js-show-info {
