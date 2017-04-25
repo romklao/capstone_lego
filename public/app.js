@@ -131,7 +131,7 @@ function getDataFromApiBySetId(query_set_id, callback) {
     });
 }
 
-//<---------- Add, get and remove favorite sets by communicating to server ---------->//
+//<---------- Add, get and remove favorite sets by communicating to the server ---------->//
 
 function addFavorite(query_set_id, callback) {
     var settingsSetFavorite = {
@@ -153,14 +153,14 @@ function getFavorites(callback) {
     callback([]);
     return
   }
-    var settingsGetFavorites = {
-        url: '/favorites',
-        headers: { "Authorization": localStorage.authHeaders},
-        dataType: 'JSON',
-        type: 'GET',
-        success: callback
-    };
-    $.ajax(settingsGetFavorites);
+  var settingsGetFavorites = {
+      url: '/favorites',
+      headers: { "Authorization": localStorage.authHeaders},
+      dataType: 'JSON',
+      type: 'GET',
+      success: callback
+  };
+  $.ajax(settingsGetFavorites);
 }
 
 function removeFavorite(query_set_id, callback) {

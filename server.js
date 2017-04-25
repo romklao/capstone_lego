@@ -36,7 +36,7 @@ const IsomorphicFetch = require('isomorphic-fetch');
 // since they are the same name. We should name for example sets/:id and another route can be /favorites
 // Remember this
 
-//////// Sign up, log in  and log out routes /////////
+//<------------------- Sign up, log in  and log out routes -------------------->//
 
 app.post('/signup', (req, res) => {
     if (!req.body) {
@@ -116,7 +116,7 @@ app.post('/signup', (req, res) => {
 });
 
 
-// NB: at time of writing, passport uses callbacks, not promises
+//<------------- NB: at time of writing, passport uses callbacks, not promises -------------->//
 
 const basicStrategy = new BasicStrategy({ disableBasicChallenge: true },function(username, password, callback) {
     console.log('username', username, 'password', password);
@@ -156,7 +156,7 @@ app.post('/login',
 app.get('/logout', logout());
 
 
-// Retrive data from rebrickcable API by using GET request 
+//<--------------- Retrive data from rebrickcable API by using GET request --------------->//
 
 app.get('/sets/:id', function(req, res) {
    fetch('https://rebrickable.com/api/v3/lego/sets/'+ req.params.id +'/?key=f65e5ae6fb029b6e46e5b7096ae9de01&page=1')
@@ -190,7 +190,7 @@ app.get('/sets-search/:name', function(req, res) {
     console.log('hi', req.params.name);
 });
 
-// Add favorite lego sets by using POST request //
+//<--------------- Add favorite lego sets by using POST request --------------->//
 
 app.post('/favorites',
     passport.authenticate(
@@ -211,7 +211,7 @@ app.post('/favorites',
     }
 );
 
-//Get favorite list using get request //
+//<------------------ Get favorite list using get request ------------------>//
 
 app.get('/favorites',
     passport.authenticate(
@@ -224,27 +224,7 @@ app.get('/favorites',
     }
 );
 
-// app.get('/favorites',
-//     passport.authenticate(
-//         'basic',
-//         {session: false}
-//     ),
-//     (req, res) => {
-//         User
-//             .findById(
-//             req.user._id,
-//             {$get: {"favorites": {set_num: req.body.set_num}}},
-//             {safe: true, upsert: true, new : true},
-//             function(err, model) {
-//                 console.log(err);
-//                 res.json(req.user.favorites);
-//         });
-        
-//     }
-// );
-
-
-// Delete favorite item by id //
+//<------------------- Delete favorite item by id -------------------->//
 
 app.delete('/favorites',
     passport.authenticate(
@@ -263,14 +243,14 @@ app.delete('/favorites',
         });
 });
 
-// Put it after all the routes otherwise it will crash //
+//<----------------- Put it after all the routes otherwise it will crash --------------->//
 
 app.use('*', function(req, res) {
   return res.status(404).json({message: 'Not Found'});
 }); 
 
-// referenced by both runServer and closeServer. closeServer
-// assumes runServer has run and set `server` to a server object
+//<--------------- referenced by both runServer and closeServer. closeServer --------------->//
+//<--------------- assumes runServer has run and set `server` to a server object ------------>//
 
 let server;
 
