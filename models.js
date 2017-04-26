@@ -3,16 +3,14 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-const FavoriteSetSchema = mongoose.Schema({
+const FavoriteSchema = mongoose.Schema({
     set_num: {type: String, required: true}
-    // name: {type: String, required: true}
 });
 
-FavoriteSetSchema.methods.apiRepr = function() {
+FavoriteSchema.methods.apiRepr = function() {
     return {
         id: this._id || '',
         set_num: this.set_num || '',
-        created: this.created || ''
     };
 }
 
@@ -30,7 +28,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    favorites: [ FavoriteSetSchema ]
+    favorites: [ FavoriteSchema ]
 });
 
 UserSchema.methods.apiRepr = function() {
@@ -52,11 +50,11 @@ UserSchema.statics.hashPassword = function(password) {
     .then(hash => hash);
 }
 
-const FavoriteSet = mongoose.model('FavoriteSet', FavoriteSetSchema); 
+const Favorite = mongoose.model('Favorite', FavoriteSchema); 
 
 const User = mongoose.model('User', UserSchema);
 
-module.exports = {User, FavoriteSet};
+module.exports = {User, Favorite};
 
 
 

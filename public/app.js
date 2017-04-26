@@ -330,6 +330,7 @@ function searchSubmit() {
 //<------------- Event listener click to show favorite list ------------->// 
 
 function setupShowFavorites() {
+
   $('#showFavorites').click(function(event) {
     event.preventDefault();
     $('#explain').hide();
@@ -343,7 +344,7 @@ function setupShowFavorites() {
             console.log('ITEM', item);
             displaySearchItems([item], favorites);
           });
-        }); 
+        });
     });  
   });  
 }
