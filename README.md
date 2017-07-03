@@ -1,4 +1,4 @@
-# HomeDecor
+# BrickPro
  
 Live Demo : https://blooming-thicket-55082.herokuapp.com/
 
