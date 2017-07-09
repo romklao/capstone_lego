@@ -4,7 +4,7 @@ Live Demo : https://blooming-thicket-55082.herokuapp.com/
 
 # Introduction
 
-BrickPro is an application that allows users to find Lego sets and to save teir farite items. They can buy a favorite lego set from sources we provide. 
+BrickPro is an application that allows users to find Lego sets and to save their favorite items. They can buy a favorite lego set from sources we provide. 
 Retrieving relevant data from Rebrickable API.
 
 # QuickStart
