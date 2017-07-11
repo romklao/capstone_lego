@@ -2,12 +2,13 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 // this makes the should syntax available throughout
 // this module
 const should = chai.should();
 
-const {User, Favorite} = require('../models');
+const {User} = require('../models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 
@@ -24,7 +25,21 @@ function tearDownDb() {
     return mongoose.connection.dropDatabase();
 }
 
-describe('favorites API resource', function() {
+function seedUserData() {
+    console.info('seeding user data');
+    const seedData = {
+            username: 'tester',
+            email: 'test@gmail.com',
+            password: '1234',
+            favorites: [
+                {set_num: '21013-1'}, 
+                {set_num: '10252-1'}
+            ]
+        };
+    return User.insert(seedData);
+}
+
+describe('users API resource', function() {
 
   // we need each of these hook functions to return a promise
   // otherwise we'd need to call a `done` callback. `runServer`,
@@ -43,97 +58,113 @@ describe('favorites API resource', function() {
   });
 
 
-  describe('GET endpoint', function() {
+  describe('POST user endpoint', function() {
 
-    it('should return all existing favorites', function() {
+    it('should add a new user', function() {
 
-        let res;
-        return chai.request(app)
-            .get('/favorites')
-            .then(function(_res) {
-                res = _res;
-                res.should.have.status(200);
-                res.body.favorites.should.have.length.of.at.least(1);
-                return Favorite.count();
-            })
-            .then(count => {
-                res.body.should.have.length.of(count);
-            });
-
-        it('should return favorites with right fields', function() {
-
-            let resFavorite;
-            return chai.request(app)
-                .get('/favorites')
-                .then(function(res) {
-                    res.should.have.status(200);
-                    res.should.be.json;
-                    res.body.should.be.a('array');
-                    res.body.should.have.length.of.at.least(1);
-
-                    res.body.forEach(function(favorite) {
-                        favorite.should.be.a('object');
-                        favorite.should.include.keys('id', 'set_num');
-                    });
-
-                    resFavorite = res.body[0];
-                    return Favorite.findById(resFavorite.id).exec();
-                })
-                .then(favorite => {
-                    resFavorite.set_num.should.equal(favorite.set_num)
-                });
-        });
-    });
-  });
-
-  describe('POST endpoint', function() {
-
-    it('should add a new favorite', function() {
-
-        const newFavorite = {
-            set_num: faker.set_num
-        };
+        const newUser = {
+            username: 'tester', 
+            password: '1234', 
+            email: 'test@gmail.com'
+            }
 
         return chai.request(app)
-            .post('/favorites')
-            .send(newFavorite)
+            .post('/signup')
+            .send(newUser)
             .then(function(res) {
                 res.should.have.status(201);
                 res.should.be.json;
                 res.body.should.be.a('object');
-                res.body.should.include.keys('id', 'set_num');
+                res.body.should.include.keys('id', 'username', 'email');
                 res.body.id.should.not.be.null;
-                res.body.set_num.should.equal(newFavorite.set_num);
-                return Favorite.findById(res.body.id).exec();
+                res.body.username.should.equal(newUser.username);
+                res.body.email.should.equal(newUser.email);
+
+                return User.findById(res.body.id).exec();
             })
-            .then(function(favorite) {
-                favorite.set_num.should.equal(newFavorite.set_num);
+            .then(function(user) {
+                user.username.should.equal(newUser.username);
+                user.email.should.equal(newUser.email);
             });
     });
   });
 
-  describe('DELETE endpoint', function() {
+    it('should fail with invalid user', done => {
 
-    it('should delete a favorite by id', function() {
+        const newUser = {
+            username: 'tester', 
+            password: '1234', 
+            email: 'test@gmail.com'
+        }
 
-        let favorite;
-
-        return Favorite
-            .findOne()
-            .exec()
-            .then(_favorite => {
-                favorite = _favorite;
-                return chai.request(app).delete(`/favorites/${favorite.id}`);
-            })
-            .then(res => {
-                res.should.have.status(204);
-                return Favorite.findById(favorite.id);
-            })
-            .then(_favorite => {
-                should.not.exist(_favorite);
+        chai.request(app)
+            .post('/login')
+            .auth(newUser.username, newUser.password)
+            .end((err, res) => {
+                res.should.have.status(401);
+                res.body.should.be.a('object');
+                done();
             });
     });
-  });
+
+
+    it('should allow a new user to login', done => {
+        const newUser = {
+            username: 'tester', 
+            password: '1234', 
+            email: 'test@gmail.com'
+        }
+
+        chai.request(app)
+            .post('/signup')
+            .send(newUser)
+            .then(function(res) {
+                res.should.have.status(201);
+                res.should.be.json;
+                res.body.should.be.a('object');
+                res.body.should.include.keys('id', 'username', 'email');
+                res.body.id.should.not.be.null;
+                res.body.username.should.equal(newUser.username);
+                res.body.email.should.equal(newUser.email);
+
+                return User.findById(res.body.id).exec();
+            })
+            .then(function(user) {
+                chai.request(app)
+                .post('/login')
+                .auth(newUser.username, newUser.password)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                });
+            })
+            
+    });
+
+
+//   describe('DELETE endpoint', function() {
+
+//     it('should delete a favorite by id', function() {
+
+//         let favorite;
+
+//         return Favorite
+//             .findOne()
+//             .exec()
+//             .then(_favorite => {
+//                 favorite = _favorite;
+//                 return chai.request(app).delete(`/favorites/${favorite.id}`);
+//             })
+//             .then(res => {
+//                 res.should.have.status(204);
+//                 return Favorite.findById(favorite.id);
+//             })
+//             .then(_favorite => {
+//                 should.not.exist(_favorite);
+//             });
+//     });
+//   });
 });
 
 

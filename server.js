@@ -151,12 +151,12 @@ app.post('/login',
     'basic',
     {session: false}),
     (req, res) => res.json({user: req.user.apiRepr()})
-  );
+);
 
 app.get('/logout', logout());
 
 
-//<--------------- Retrive data from rebrickcable API by using GET request --------------->//
+//<--------------- Retrieve data from rebrickcable API by using GET request --------------->//
 
 app.get('/sets/:id', function(req, res) {
    fetch('https://rebrickable.com/api/v3/lego/sets/'+ req.params.id + `/?key=${REBRICKABLE_KEY}&page=1`)
@@ -254,9 +254,9 @@ app.use('*', function(req, res) {
 
 let server;
 
-function runServer() {
+function runServer(databaseUrl) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(DATABASE_URL, err => {
+    mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
       }
@@ -287,7 +287,7 @@ function closeServer() {
 }
 
 if (require.main === module) {
-  runServer().catch(err => console.error(err));
+  runServer(DATABASE_URL).catch(err => console.error(err));
 };
 
 module.exports = {app, runServer, closeServer};

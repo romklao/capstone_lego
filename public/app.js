@@ -101,7 +101,7 @@ function setupLogOutSubmit() {
     event.preventDefault();
     localStorage.removeItem('authHeaders');
 
-    onLogOut(function() {
+      onLogOut(function() {
       console.log('log out is done')
     });
   });
@@ -223,12 +223,13 @@ function renderItem(item, favorites) {
 
     resultElement += '<div class="col-md-6 col-sm-12 col-xs-12 setDetail">';
 
+
     if (isFavorite) {
-      resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' +
+      resultElement +=  '<span class="btn-group btn-group-sm pull-right">' +
                         `<button class="btn btn removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button></span>`;
     } else {
       resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' + 
-                          `<button class="btn buttonFavorite" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +
+                          `<button class="btn buttonFavorite showWhenLoggedIn" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +
                         '</span>';
     }
     resultElement += `<p class="setNum"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num}</p>`;
@@ -300,30 +301,41 @@ function searchSubmit() {
     $('#landingPage').hide();
     $('#js-show-info').html('');
     
-    var search_text = $(this).find('#js-input').val();
-    getFavorites(function(favorites) {
+    var jsInput = $('#js-input');
+    var search_text = jsInput.val();
 
-      getDataFromApiBySetName(search_text, function (data) {
-        if (data && data.results.length) {
-          displaySearchItems(data.results, favorites);
-          console.log('DATA', data.results)
-        } 
-        else {
-          getDataFromApiBySetId(search_text, function (item) {
-            if(item) {
-              displaySearchItems([item], favorites);
-              console.log('ITEM', item)
-            }
-            else {
-              resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
-                                '<p class="errMsg">No results!</p>' +
-                              '</div>';
-              $('#js-show-info').html(resultError);
-            }
-          });
-        }
+    if (!jsInput.val()) {
+      console.log("empty input")
+      resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
+                        '<p class="errMsg">Please enter a set id or name!</p>' +
+                      '</div>';
+      $('#js-show-info').html(resultError);
+
+    } else {
+      getFavorites(function(favorites) {
+
+        getDataFromApiBySetName(search_text, function (data) {
+          if (data && data.results.length) {
+            displaySearchItems(data.results, favorites);
+            console.log('DATA', data.results)
+          } 
+          else {
+            getDataFromApiBySetId(search_text, function (item) {
+              if(item) {
+                displaySearchItems([item], favorites);
+                console.log('ITEM', item)
+              }
+              else {
+                resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
+                                  '<p class="errMsg">No results!</p>' +
+                                '</div>';
+                $('#js-show-info').html(resultError);
+              }
+            });
+          }
+        });
       });
-    });
+    }
   });
 }
 
