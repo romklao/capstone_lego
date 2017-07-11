@@ -193,6 +193,9 @@ function removeFavorite(query_set_id, callback) {
   }
 }
 
+// function alertToLogin() {
+//   swal("Please log in!");
+// }
 
 //<------------------- Display item -------------------->//
 
@@ -223,13 +226,18 @@ function renderItem(item, favorites) {
 
     resultElement += '<div class="col-md-6 col-sm-12 col-xs-12 setDetail">';
 
-
-    if (isFavorite) {
-      resultElement +=  '<span class="btn-group btn-group-sm pull-right">' +
-                        `<button class="btn btn removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button></span>`;
-    } else {
+    if (localStorage.authHeaders) {
+      if (isFavorite) {
+        resultElement +=  '<span class="btn-group btn-group-sm pull-right">' +
+                          `<button class="btn btn removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button></span>`;
+      } else {
+        resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' + 
+                            `<button class="btn buttonFavorite showWhenLoggedIn" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +
+                          '</span>';
+      }
+    } else if (!localStorage.authHeaders) {
       resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' + 
-                          `<button class="btn buttonFavorite showWhenLoggedIn" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +
+                          `<button class="btn buttonFavorite showWhenLoggedOut" onclick="swal('Please sign up or log in!')" type="submit">Add Favorite</button>` +
                         '</span>';
     }
     resultElement += `<p class="setNum"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num}</p>`;
@@ -311,7 +319,7 @@ function searchSubmit() {
                       '</div>';
       $('#js-show-info').html(resultError);
 
-    } else {
+    } else if (jsInput.val()) {
       getFavorites(function(favorites) {
 
         getDataFromApiBySetName(search_text, function (data) {
@@ -324,8 +332,7 @@ function searchSubmit() {
               if(item) {
                 displaySearchItems([item], favorites);
                 console.log('ITEM', item)
-              }
-              else {
+              } else {
                 resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
                                   '<p class="errMsg">No results!</p>' +
                                 '</div>';
@@ -335,6 +342,7 @@ function searchSubmit() {
           }
         });
       });
+      jsInput.val('');
     }
   });
 }

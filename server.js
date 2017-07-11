@@ -23,6 +23,7 @@ app.use(jsonParser);
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/sweetalert-master'));
 
 
 ///////// Rebrickable API imported packages ////////
