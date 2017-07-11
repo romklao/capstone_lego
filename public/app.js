@@ -177,25 +177,36 @@ function removeFavorite(query_set_id, callback) {
       });  
     }
   }
-  if (confirm("Are you sure you want to remove the item?")) { 
-      var settingsRemoveSet = {
-          url: '/favorites',
-          headers: { "Authorization": localStorage.authHeaders},
-          data: JSON.stringify({
-              set_num: query_set_id
-          }),
-          contentType: 'application/json',
-          dataType: 'JSON',
-          type: 'DELETE',
-          success: callback,
-      };
-      $.ajax(settingsRemoveSet);
-  }
+  swal({
+    title: "Are you sure you want to delete the item?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "No, cancel plx!",
+    closeOnConfirm: false,
+    closeOnCancel: false
+    },
+    function(isConfirm){
+      if (isConfirm) {
+        swal("Deleted!", "The item has been deleted.", "success");
+        var settingsRemoveSet = {
+            url: '/favorites',
+            headers: { "Authorization": localStorage.authHeaders},
+            data: JSON.stringify({
+                set_num: query_set_id
+            }),
+            contentType: 'application/json',
+            dataType: 'JSON',
+            type: 'DELETE',
+            success: callback,
+        };
+        $.ajax(settingsRemoveSet);
+      } else {
+        swal("Cancelled", "The item is safe :)", "error");
+      }
+  });
 }
-
-// function alertToLogin() {
-//   swal("Please log in!");
-// }
 
 //<------------------- Display item -------------------->//
 
