@@ -48,6 +48,10 @@ function onLogIn(email, password, callback) {
         console.log('localStorage.authHeaders', localStorage.authHeaders)
         window.location = '/';
     })
+    .fail(function(err) {
+        console.log('login FAIL', err.responseText)
+        swal(err.responseText)
+    })
 }
 
 function onLogOut(callback) {
@@ -355,15 +359,15 @@ function searchSubmit() {
                 $('#headerResults').html('');
 
                 resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
-                                  '<p class="errMsg">No results!</p>' +
+                                  '<p class="errMsg">No Results!</p>' +
                                 '</div>';
                 $('#js-show-info').html(resultError);
               }
             });
           }
         });
+        jsInput.val('');
       });
-      jsInput.val('');
     }
   });
   $('#headerResults').html('');
