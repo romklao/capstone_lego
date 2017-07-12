@@ -46,11 +46,7 @@ function onLogIn(email, password, callback) {
         localStorage.username = res.user.username;
         localStorage.authHeaders = settingsLogin.headers.Authorization;
         console.log('localStorage.authHeaders', localStorage.authHeaders)
-    })
-    .fail(function(err) {
-        console.log('login FAIL')
-        swal(err.responseJSON.message)
-        console.log(err)
+        window.location = '/';
     })
 }
 
@@ -77,6 +73,8 @@ function setupSignUpSubmit() {
     onSignUp(username_signup, email_signup, password_signup, function(res) {
       if (res.message) {
         console.log('RES',res);
+      } else {
+        window.location = '/';
       }
     });
     $('.signup_input').val('');

@@ -43,12 +43,11 @@ app.post('/signup', (req, res) => {
     if (!req.body) {
     return res.status(400).json({message: 'No request body'});
     }
+    let {username, password, email} = req.body;
 
-    if (!('username' in req.body)) {
+    if (!(username)) {
     return res.status(422).json({message: 'Missing field: username'});
     }
-
-    let {username, password, email} = req.body;
 
     if (typeof username !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: username'});
@@ -57,7 +56,7 @@ app.post('/signup', (req, res) => {
     username = username.trim();
 
     if (username === '') {
-    return res.status(422).json({message: 'Incorrect field length: username'});
+    return res.status(422).json({message: 'Missing field: username'});
     }
 
     if (!(email)) {
@@ -90,12 +89,12 @@ app.post('/signup', (req, res) => {
 
     // check for existing user
     return User
-    .find({username})
+    .find({email})
     .count()
     .exec()
     .then(count => {
       if (count > 0) {
-        return res.status(422).json({message: 'username already taken'});
+        return res.status(422).json({message: 'email already taken'});
       }
       // if no existing user, hash password
       return User.hashPassword(password)
