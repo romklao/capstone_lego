@@ -183,13 +183,12 @@ function removeFavorite(query_set_id, callback) {
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
     confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "No, cancel plx!",
-    closeOnConfirm: false,
-    closeOnCancel: false
+    cancelButtonText: "No, cancel!",
+    closeOnConfirm: true,
+    closeOnCancel: true
     },
-    function(isConfirm){
+    function(isConfirm) {
       if (isConfirm) {
-        swal("Deleted!", "The item has been deleted.", "success");
         var settingsRemoveSet = {
             url: '/favorites',
             headers: { "Authorization": localStorage.authHeaders},
@@ -202,11 +201,12 @@ function removeFavorite(query_set_id, callback) {
             success: callback,
         };
         $.ajax(settingsRemoveSet);
-      } else {
-        swal("Cancelled", "The item is safe :)", "error");
       }
-  });
+    }
+  );
 }
+
+
 
 //<------------------- Display item -------------------->//
 
@@ -313,18 +313,23 @@ function displaySearchItems(items, favorites) {
 function searchSubmit() {
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
-    var resultError = '';
 
     $('#explain').hide();
     $('.footer').hide();
     $('#landingPage').hide();
-    $('#js-show-info').html('');
-    
+    $('#js-show-info').html('')
+
+    var resultError = '';
     var jsInput = $('#js-input');
     var search_text = jsInput.val();
 
+    var header =  `<h1>The results of ${search_text}</h1>`
+                 
+    $('#headerResults').html('');
+    
     if (!jsInput.val()) {
-      console.log("empty input")
+      $('#headerResults').html('');
+
       resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
                         '<p class="errMsg">Please enter a set id or name!</p>' +
                       '</div>';
@@ -335,15 +340,21 @@ function searchSubmit() {
 
         getDataFromApiBySetName(search_text, function (data) {
           if (data && data.results.length) {
+            $('#headerResults').html(header);
+
             displaySearchItems(data.results, favorites);
             console.log('DATA', data.results)
           } 
           else {
             getDataFromApiBySetId(search_text, function (item) {
               if(item) {
+                $('#headerResult').html(header);
+
                 displaySearchItems([item], favorites);
                 console.log('ITEM', item)
               } else {
+                $('#headerResults').html('');
+
                 resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
                                   '<p class="errMsg">No results!</p>' +
                                 '</div>';
@@ -356,6 +367,7 @@ function searchSubmit() {
       jsInput.val('');
     }
   });
+  $('#headerResults').html('');
 }
 
 //<------------- Event listener click to show favorite list ------------->// 
@@ -364,20 +376,26 @@ function setupShowFavorites() {
 
   $('#showFavorites').click(function(event) {
     event.preventDefault();
+
+    $('#headerResults').html('');
     $('#explain').hide();
     $('#landingPage').hide();
     $('.footer').hide();
     $('#js-show-info').html('');
 
+    var favoriteHeader = '<h1>Your favorite items</h1>'
+
     getFavorites(function(favorites) {
         favorites.forEach(function(favorite) {
           getDataFromApiBySetId(favorite.set_num, function(item) {
             console.log('ITEM', item);
+
+            $('#headerResults').html(favoriteHeader);
             displaySearchItems([item], favorites);
           });
         });
-    });  
-  });  
+    });
+  });
 }
 
 //<---------------- Show and hide elements when log in or log out -------------->//
