@@ -60,20 +60,6 @@ app.post('/signup', (req, res) => {
     return res.status(422).json({message: 'Incorrect field length: username'});
     }
 
-    if (!(password)) {
-    return res.status(422).json({message: 'Missing field: password'});
-    }
-
-    if (typeof password !== 'string') {
-    return res.status(422).json({message: 'Incorrect field type: password'});
-    }
-
-    password = password.trim();
-
-    if (password === '') {
-    return res.status(422).json({message: 'Incorrect field length: password'});
-    }
-
     if (!(email)) {
     return res.status(422).json({message: 'Missing field: email'});
     }
@@ -86,6 +72,20 @@ app.post('/signup', (req, res) => {
 
     if (email === '') {
     return res.status(422).json({message: 'Incorrect field length: email'});
+    }
+
+    if (!(password)) {
+    return res.status(422).json({message: 'Missing field: password'});
+    }
+
+    if (typeof password !== 'string') {
+    return res.status(422).json({message: 'Incorrect field type: password'});
+    }
+
+    password = password.trim();
+
+    if (password === '') {
+    return res.status(422).json({message: 'Incorrect field length: password'});
     }
 
     // check for existing user
