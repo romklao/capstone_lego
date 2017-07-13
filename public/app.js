@@ -48,10 +48,6 @@ function onLogIn(email, password, callback) {
         console.log('localStorage.authHeaders', localStorage.authHeaders)
         window.location = '/';
     })
-    .fail(function(err) {
-        console.log('login FAIL', err.responseText)
-        swal(err.responseText)
-    })
 }
 
 function onLogOut(callback) {
@@ -182,7 +178,6 @@ function removeFavorite(query_set_id, callback) {
   }
   swal({
     title: "Are you sure you want to delete the item?",
-    type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
     confirmButtonText: "Yes, delete it!",
@@ -334,7 +329,7 @@ function searchSubmit() {
       $('#headerResults').html('');
 
       resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
-                        '<p class="errMsg">Please enter a set id or name!</p>' +
+                        '<p class="errMsg">Please enter a Lego set number or name!</p>' +
                       '</div>';
       $('#js-show-info').html(resultError);
 

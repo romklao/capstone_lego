@@ -94,7 +94,7 @@ app.post('/signup', (req, res) => {
     .exec()
     .then(count => {
       if (count > 0) {
-        return res.status(422).json({message: 'email already taken'});
+        return res.json({message: 'email already taken'});
       }
       // if no existing user, hash password
       return User.hashPassword(password)
@@ -111,7 +111,7 @@ app.post('/signup', (req, res) => {
       return res.status(201).json(user.apiRepr());
     })
     .catch(err => {
-      res.status(500).json({message: 'Internal server error'})
+      res.json({message: 'Internal server error'})
     });
 });
 
