@@ -83,11 +83,11 @@ input:-webkit-autofill {
     text-align: center;
 }
 
-#headerResults {
+#headerResults > h1 {
     position: absolute;
     top: 17%;
     left: 50%;
-    transform: translatex(-50%);
+    transform: translateX(-50%);
 }
 
 #js-show-info {
@@ -382,13 +382,12 @@ a:hover, a:active, a:visited, a:focus  {
         border: 1px solid #c0d0e8;
         border-bottom: none;
     }
-    #headerResults {
-        width: 100%;
-        top: 25%;
-        left: 68%;
-    }
     #headerResults > h1 {
         font-size: 30px;
+        width: 100%;
+        top: 28%;
+        left: 64%;
+        margin: 0;
     }
     .setDetail {
         border: 1px solid #c0d0e8;
