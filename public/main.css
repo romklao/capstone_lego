@@ -270,7 +270,7 @@ tr.lastTd {
     font-size: 27px;
     text-align: center;
     margin-top: 8%;
-    margin-bottom: 13%;
+    margin-bottom: 10%;
 }
 
 .introduct {
@@ -373,6 +373,9 @@ a:hover, a:active, a:visited, a:focus  {
 }
 
 @media (max-width: 500px) {
+    .landingIntro {
+        font-size: 28px;
+    }
     .imageDiv {
         height: auto;
         padding-top: 10%;
@@ -421,8 +424,14 @@ a:hover, a:active, a:visited, a:focus  {
 
     .whatWeDo1 {
         margin-bottom: 8%;
+        width: 100%;
     }
-
+    .imgWhatWeDo1, .imgWhatWeDo2 {
+        width: 100%;
+    }
+    .introduction1, .introduction2 {
+        width: 100%;
+    }
     .modal-dialog {
         width: 400px;
         margin: 80px auto;
