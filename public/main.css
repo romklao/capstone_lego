@@ -391,10 +391,23 @@ a:hover, a:active, a:visited, a:focus  {
         border: 1px solid #c0d0e8;
         border-top: none;
     }
-
+    .setNumImg {
+        font-size: 15px;
+    }
+    .itemImage {
+        margin-top: 15px;
+    }
+    tr.lastTd {
+        margin-left: 52%;
+    }
+    .signupLink {
+        font-size: 16px;
+    }
     #js-show-info {
         margin-top: 42%;
         top: 20%;
+        padding-right: 3%;
+        padding-left: 3%;
     }
 
     .footer, .js-footer {
