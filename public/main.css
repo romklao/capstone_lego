@@ -416,6 +416,19 @@ a:hover, a:active, a:visited, a:focus  {
     }
 }
 
+@media (min-width: 510px) and (max-width: 1100px) {
+    .imageDiv {
+        height: auto;
+        padding-top: 10%;
+        border: 1px solid #c0d0e8;
+        border-bottom: none;
+    }
+    .setDetail {
+        border: 1px solid #c0d0e8;
+        border-top: none;
+    }
+}
+
 
 
 

@@ -223,7 +223,7 @@ function renderItem(item, favorites) {
     }
 
     if(item.set_img_url) {
-      resultElement +=  '<div class="col-md-6 col-sm-12 col-xs-12 imageDiv">' +
+      resultElement +=  '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 imageDiv">' +
                           `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num} ${item.name}</span>` +
                           `<p><img class="itemImage" src="${item.set_img_url}"></p>`;
 
@@ -233,7 +233,7 @@ function renderItem(item, favorites) {
       resultElement += '</div>';
     }
 
-    resultElement += '<div class="col-md-6 col-sm-12 col-xs-12 setDetail">';
+    resultElement += '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 setDetail">';
 
     if (localStorage.authHeaders) {
       if (isFavorite) {
