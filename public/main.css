@@ -376,10 +376,25 @@ a:hover, a:active, a:visited, a:focus  {
     .imageDiv {
         height: auto;
         padding-top: 10%;
+        border: 1px solid #c0d0e8;
+        border-bottom: none;
+    }
+    #headerResults {
+        width: 100%;
+        top: 25%;
+        left: 68%;
+    }
+    #headerResults > h1 {
+        font-size: 30px;
+    }
+    .setDetail {
+        border: 1px solid #c0d0e8;
+        border-top: none;
     }
 
     #js-show-info {
         margin-top: 42%;
+        top: 20%;
     }
 
     .footer, .js-footer {
