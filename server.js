@@ -94,7 +94,10 @@ app.post('/signup', (req, res) => {
     .exec()
     .then(count => {
       if (count > 0) {
-        return res.json({message: 'email already taken'});
+        return Promise.reject({
+          message: 'email already taken'
+        });
+        // return res.json({message: 'email already taken'});
       }
       // if no existing user, hash password
       return User.hashPassword(password)
@@ -111,14 +114,17 @@ app.post('/signup', (req, res) => {
       return res.status(201).json(user.apiRepr());
     })
     .catch(err => {
-      res.json({message: 'Internal server error'})
+      if (err.message === 'email already taken') {
+        res.status(422).json({message: err.message})
+      }
+        res.status(500).json({message: 'Internal server error'})
     });
 });
 
 
 //<------------- NB: at time of writing, passport uses callbacks, not promises -------------->//
 
-const basicStrategy = new BasicStrategy({ disableBasicChallenge: true },function(username, password, callback) {
+const basicStrategy = new BasicStrategy(function(username, password, callback) {
     console.log('username', username, 'password', password);
   let user;
 
