@@ -354,7 +354,7 @@ function searchSubmit() {
                 $('#headerResults').html('');
 
                 resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
-                                  '<p class="errMsg">No Results!</p>' +
+                                  '<p class="errMsg">No results!</p>' +
                                 '</div>';
                 $('#js-show-info').html(resultError);
               }
