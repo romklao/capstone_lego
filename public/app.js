@@ -439,6 +439,7 @@ function signupModal() {
 //<------------ document.ready ------------>//
 
 $(function() {
+  switchLogInLogOut();
   learnMore();
   searchSubmit();
   loginModal();  
@@ -446,7 +447,6 @@ $(function() {
   setupSignUpSubmit();
   setupLogInSubmit();
   setupLogOutSubmit();
-  switchLogInLogOut();
   setupShowFavorites();
   console.log('hi');
 });

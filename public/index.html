@@ -16,32 +16,33 @@
         <!-- // container -->
           <nav class="navbar-fixed-top">
             <div class="row navbar">
-              <div class="col-lg-6 col-sm-6 wrapLogoSearch pull-left">
-                  <a href="/" class="titleLink title">BrickPro</a>
-                  <form id="js-search-form">
-                    <input id="js-input" type="text" class="search_input" placeholder="Search">
-                    <span>
-                      <button class="buttonGo" type="submit">Go</button>
-                    </span>
-                  </form>
-                </ul>
+              <div class="col-lg-4 col-sm-4 pull-left">
+                <a href="/" class="titleLink title">BrickPro</a>
               </div>
-              <div class="col-lg-6 col-sm-6 list">
+              <div class="col-lg-4 col-sm-4 wrapLogoSearch">
+                <form id="js-search-form">
+                  <input id="js-input" type="text" class="search_input" placeholder="Search">
+                  <span>
+                    <button class="buttonGo" type="submit">Go</button>
+                  </span>
+                </form>
+              </div>
+              <div class="col-lg-4 col-sm-4 list">
                 <ul class="nav nav-pills pull-right">
-                  <li role="presentation" class="showWhenLoggedOut">
-                    <a href="/login" data-toggle="modal" data-target="#myLoginModal" class="link">Log In</a>
+                  <li class="helloLogin">
+                    <p class="hello showWhenLoggedIn" style="display: none;">Hello, <span id="helloUser"></span>!</p>
                   </li>
-                  <li role="presentation" class="showWhenLoggedOut">
-                    <a href="/signup" data-toggle="modal" data-target="#exampleModal" class="link goSignup">Sign Up</a>
+                  <li>
+                    <a href="#" class="link showWhenLoggedIn" id="showFavorites" style="display: none;">Favorites</a>
                   </li>
-                  <li role="presentation" class="showWhenLoggedIn helloLogin">
-                    <p class="hello">Hello, <span id="helloUser"></span>!</p>
+                  <li>
+                    <a href="/login" data-toggle="modal" data-target="#myLoginModal" class="link showWhenLoggedOut" style="display: none;">Log In</a>
                   </li>
-                  <li role="presentation" class="showWhenLoggedIn">
-                    <a href="#" class="link" id="showFavorites">Favorites</a>
+                  <li>
+                    <a href="/signup" data-toggle="modal" data-target="#exampleModal" class="link goSignup showWhenLoggedOut" style="display: none;">Sign Up</a>
                   </li>
-                  <li role="presentation" class="showWhenLoggedIn">
-                    <a href="#" class="link" id="my_logout">Log Out</a>
+                  <li>
+                    <a href="#" class="link showWhenLoggedIn" id="my_logout" style="display: none;">Log Out</a>
                   </li>
                 </ul>
               </div>
