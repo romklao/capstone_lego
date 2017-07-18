@@ -1,3 +1,4 @@
+'use strict'
 
 const bodyParser = require('body-parser');
 const urlParser = bodyParser.urlencoded({
@@ -125,7 +126,6 @@ app.post('/signup', (req, res) => {
 //<------------- NB: at time of writing, passport uses callbacks, not promises -------------->//
 
 const basicStrategy = new BasicStrategy(function(username, password, callback) {
-    console.log('username', username, 'password', password);
   let user;
 
   User
@@ -136,7 +136,6 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
       if (!user) {
         return callback(null, false, {message: 'Incorrect username'});
       }
-      console.log('user', user);
       return user.validatePassword(password);
     })
     .then(isValid => {
@@ -193,7 +192,6 @@ app.get('/sets-search/:name', function(req, res) {
     .then(function(stories) {
         res.json(stories)
     });
-    console.log('hi', req.params.name);
 });
 
 //<--------------- Add favorite lego sets by using POST request --------------->//
@@ -209,9 +207,7 @@ app.post('/favorites',
             {$push: {"favorites": {set_num: req.body.set_num}}},
             {safe: true, upsert: true, new : true},
             function(err, model) {
-                console.log(err);
-                console.log('favorites', req.user.favorites)
-                res.json(req.user.favorites);
+              res.json(req.user.favorites);
             }
         );
     }
@@ -225,7 +221,6 @@ app.get('/favorites',
         {session: false}
     ),
     (req, res) => {
-        console.log('favorites', req.user.favorites)
         res.json(req.user.favorites);
     }
 );
@@ -244,8 +239,7 @@ app.delete('/favorites',
         {$pull: {"favorites": {set_num: req.body.set_num}}},
         {safe: true, upsert: true, new : true},
         function(err, model) {
-            console.log(err);
-            res.json(req.user.favorites);
+          res.json(req.user.favorites);
         });
 });
 
@@ -267,7 +261,6 @@ function runServer(databaseUrl) {
         return reject(err);
       }
       server = app.listen(PORT, () => {
-        console.log(`Your app is listening on port ${PORT}`);
         resolve();
       })
       .on('error', err => {
@@ -281,7 +274,6 @@ function runServer(databaseUrl) {
 function closeServer() {
   return mongoose.disconnect().then(() => {
      return new Promise((resolve, reject) => {
-       console.log('Closing server');
        server.close(err => {
            if (err) {
                return reject(err);

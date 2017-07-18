@@ -14,7 +14,6 @@ function learnMore() {
 
 function onSignUp(username, email, password, callback) {
     var newUser = {'username': username, 'email': email, 'password': password};
-    console.log('signup');
     var settingsSignup = {
         url: '/signup',
         data: JSON.stringify(newUser),
@@ -23,18 +22,14 @@ function onSignUp(username, email, password, callback) {
         type: 'POST'
     }
     $.ajax(settingsSignup).then(function(res) {
-        console.log('RES: ', res)
         onLogIn(email, password, callback);
     })
     .fail(function(err) {
-        console.log('SIGNUP FAIL')
         swal(err.responseJSON.message)
-        console.log(err)
     })
 }
 
 function onLogIn(email, password, callback) {
-    console.log('email'); 
     var settingsLogin = {
         url: '/login',
         headers: { "Authorization": "Basic " + btoa(email + ":" + password) },
@@ -45,7 +40,6 @@ function onLogIn(email, password, callback) {
     $.ajax(settingsLogin).then(function(res) {
         localStorage.username = res.user.username;
         localStorage.authHeaders = settingsLogin.headers.Authorization;
-        console.log('localStorage.authHeaders', localStorage.authHeaders)
         window.location = '/';
     })
 }
@@ -56,7 +50,6 @@ function onLogOut(callback) {
         type: 'GET',
     }
     $.ajax(settingsLogOut).then(function(res) {
-        console.log('User Logged Out')
         window.location = '/';
     });
 }
@@ -72,7 +65,6 @@ function setupSignUpSubmit() {
 
     onSignUp(username_signup, email_signup, password_signup, function(res) {
       if (res.message) {
-        console.log('RES',res);
       } else {
         window.location = '/';
       }
@@ -83,13 +75,11 @@ function setupSignUpSubmit() {
 
 function setupLogInSubmit() {
   $('#my_login_form').submit(function(event) {
-    console.log('login');
     event.preventDefault();
     var email_login = $(this).find('#login_email').val();
     var password_login = $(this).find('#login_password').val();
 
     onLogIn(email_login, password_login, function(user) {
-      console.log('user',user)
     });
     $('.login_input').val('');
   });
@@ -101,7 +91,6 @@ function setupLogOutSubmit() {
     localStorage.removeItem('authHeaders');
 
       onLogOut(function() {
-      console.log('log out is done')
     });
   });
 }
@@ -147,7 +136,6 @@ function addFavorite(query_set_id, callback) {
 }
 
 function getFavorites(callback) {
-  console.log('localStorage', localStorage);
   if (!('authHeaders' in localStorage) || !localStorage['authHeaders']) {
     callback([]);
     return
@@ -287,7 +275,6 @@ function renderItem(item, favorites) {
 }
 
 function displaySearchItems(items, favorites) {
-  console.log('displaySearchItems', items);
   var result = '';
   if(items.length) {
     items.forEach(function (item) {
@@ -341,7 +328,6 @@ function searchSubmit() {
             $('#headerResults').html(header);
 
             displaySearchItems(data.results, favorites);
-            console.log('DATA', data.results)
           } 
           else {
             getDataFromApiBySetId(search_text, function (item) {
@@ -349,7 +335,6 @@ function searchSubmit() {
                 $('#headerResult').html(header);
 
                 displaySearchItems([item], favorites);
-                console.log('ITEM', item)
               } else {
                 $('#headerResults').html('');
 
@@ -386,7 +371,6 @@ function setupShowFavorites() {
     getFavorites(function(favorites) {
         favorites.forEach(function(favorite) {
           getDataFromApiBySetId(favorite.set_num, function(item) {
-            console.log('ITEM', item);
 
             $('#headerResults').html(favoriteHeader);
             displaySearchItems([item], favorites);
@@ -402,7 +386,6 @@ function switchLogInLogOut() {
   if (localStorage.authHeaders) {
     $('.showWhenLoggedIn').show();
     $('.showWhenLoggedOut').hide();
-    console.log('username', localStorage.username);
     $('#helloUser').html(localStorage.username);
   } else {
     $('.showWhenLoggedIn').hide();
@@ -448,7 +431,6 @@ $(function() {
   setupLogInSubmit();
   setupLogOutSubmit();
   setupShowFavorites();
-  console.log('hi');
 });
 
 
