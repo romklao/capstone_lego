@@ -194,6 +194,10 @@ input:-webkit-autofill {
     color: #5599FF;
 }
 
+table {
+    font-size: 15px;
+}
+
 .tableInfo {
     width: 100%;
 }
@@ -403,7 +407,7 @@ a:hover, a:active, a:visited, a:focus  {
         margin-left: 50%;
     }
     .signupLink {
-        font-size: 16px;
+        font-size: 15px;
     }
     #js-show-info {
         margin-top: 42%;
