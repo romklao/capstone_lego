@@ -1,5 +1,5 @@
 # BrickPro
- 
+<img src="public/images/legoPortfolio.png" width="150" height="100"> 
 Live Demo : https://blooming-thicket-55082.herokuapp.com/
 
 # Introduction
