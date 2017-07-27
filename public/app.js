@@ -1,6 +1,28 @@
 'use strict'
 
-//<------------ Click to go to whatWeDo element that shows how the app work ---------->//
+$('.toggle').click(function() {
+    $('nav ul').slideToggle();
+});
+
+$(window).resize(function() {
+    if ($(window).width() > 780) {
+        $('nav ul').removeAttr('style');
+    }
+});
+
+function submitAndHideUlMobile() {
+  $('.submitAndHideUl').on('click', function(event) {
+    event.preventDefault();
+    $('nav ul').hide();
+
+    if ($(window).width() > 780) {
+        $('nav ul').removeAttr('style');
+    }
+  })
+}
+
+
+//<------------ Click to go to whatWeDo element that shows how the app works ---------->//
 
 function learnMore() {
   $("#scroll").click(function() {
@@ -10,7 +32,7 @@ function learnMore() {
   });
 }
 
-//<---------- Sign up, log in and log out communicate with server ---------->//
+//<---------- Sign up, log in and log out that communicate with server ---------->//
 
 function onSignUp(username, email, password, callback) {
     var newUser = {'username': username, 'email': email, 'password': password};
@@ -192,8 +214,6 @@ function removeFavorite(query_set_id, callback) {
   );
 }
 
-
-
 //<------------------- Display item -------------------->//
 
 function renderItem(item, favorites) {
@@ -211,7 +231,7 @@ function renderItem(item, favorites) {
     }
 
     if(item.set_img_url) {
-      resultElement +=  '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 imageDiv">' +
+      resultElement +=  '<div class="imageDiv">' +
                           `<span class="setNumImg"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num} ${item.name}</span>` +
                           `<p><img class="itemImage" src="${item.set_img_url}"></p>`;
 
@@ -221,20 +241,21 @@ function renderItem(item, favorites) {
       resultElement += '</div>';
     }
 
-    resultElement += '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 setDetail">';
+    resultElement += '<div class="setDetail">';
 
     if (localStorage.authHeaders) {
       if (isFavorite) {
-        resultElement +=  '<span class="btn-group btn-group-sm pull-right">' +
-                          `<button class="btn btn removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button></span>`;
+        resultElement +=  '<span>' +
+                          `<button class="removeFavorite" onclick="removeFavorite('${item.set_num}')" type="submit">Remove Favorite</button>`+ 
+                          '</span>';
       } else {
-        resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' + 
-                            `<button class="btn buttonFavorite showWhenLoggedIn" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +
+        resultElement +=  '<span class="addButton">' + 
+                            `<button class="buttonFavorite showWhenLoggedIn" onclick="addFavorite('${item.set_num}')" type="submit">Add Favorite</button>` +
                           '</span>';
       }
     } else if (!localStorage.authHeaders) {
-      resultElement +=  '<span class="btn-group btn-group-sm pull-right addButton">' + 
-                          `<button class="btn buttonFavorite showWhenLoggedOut" onclick="swal('Please sign up or log in!')" type="submit">Add Favorite</button>` +
+      resultElement +=  '<span class="addButton">' + 
+                          `<button class="buttonFavorite showWhenLoggedOut" onclick="swal('Please sign up or log in!')" type="submit">Add Favorite</button>` +
                         '</span>';
     }
     resultElement += `<p class="setNum"><img class="logo_lego" src="/images/lego_bricks.jpg"> ${item.set_num}</p>`;
@@ -261,7 +282,7 @@ function renderItem(item, favorites) {
   }
   if(item.set_url) {
     if(!localStorage.authHeaders) {
-      resultElement += '<tr class="lastTd"><td><a data-toggle="modal" data-target="#exampleModal" class="signupLink" href="#">Sign up for more details</a></td></tr>';          
+      resultElement += '<tr class="lastTd"><td><a href="#" id="signupLink" onclick="signupMoreInfo()">Sign up for more details</a></td></tr>';          
     }
     if(localStorage.authHeaders) {
       resultElement +=  '<td class="tdTable tdLeft">More Details</td>' +
@@ -280,15 +301,6 @@ function displaySearchItems(items, favorites) {
     items.forEach(function (item) {
       result += renderItem(item, favorites);
     });
-      result += '<div class="row js-footer">' +
-                  '<div class="col-lg-12 col-sm-12">' +
-                    '<p class="js-footerLogo">BrickPro <span class="js-footerBuilder">Built by Romklao Chainuwong</span>' +
-                      '<a href="https://github.com/romklao/capstone_lego" target="_blank"><img src="images/github-logo.png" class="js-githubLogo"></a>' +
-                    '</p>' +
-                  '</div>' +
-                '</div>'
-  } else {
-    result += '<p>No results</p>';
   }
   $('#js-show-info').append(result);
 }
@@ -315,10 +327,10 @@ function searchSubmit() {
     if (!jsInput.val()) {
       $('#headerResults').html('');
 
-      resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
+      resultError +=  '<div class="error">' +
                         '<p class="errMsg">Please enter a Lego set number or name!</p>' +
                       '</div>';
-      $('#js-show-info').html(resultError);
+      $('#headerResults').html(resultError);
 
     } else if (jsInput.val()) {
       getFavorites(function(favorites) {
@@ -338,10 +350,10 @@ function searchSubmit() {
               } else {
                 $('#headerResults').html('');
 
-                resultError +=  '<div class="col-lg-12 col-sm-12 error">' +
+                resultError +=  '<div class="error">' +
                                   '<p class="errMsg">No results!</p>' +
                                 '</div>';
-                $('#js-show-info').html(resultError);
+                $('#headerResults').html(resultError);
               }
             });
           }
@@ -350,7 +362,6 @@ function searchSubmit() {
       });
     }
   });
-  $('#headerResults').html('');
 }
 
 //<------------- Event listener click to show favorite list ------------->// 
@@ -380,6 +391,16 @@ function setupShowFavorites() {
   });
 }
 
+function returnHome() {
+  $('.logoTitle').on('click', function(event) {
+    event.preventDefault();
+    $('#explain').show();
+    $('#landingPage').show();
+    $('.footer').show();
+    $('#headerResults').html('');
+    $('#js-show-info').html('');
+  });
+}
 //<---------------- Show and hide elements when log in or log out -------------->//
 
 function switchLogInLogOut() {
@@ -395,28 +416,44 @@ function switchLogInLogOut() {
 
 //<------------ Popup modal window to log in and sign up ------------>//
 
-function loginModal() {
-  $('#myLoginModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text()
-    modal.find('.modal-body input').val()
+function showLoginModal() {
+  $('#loginBtn').on('click', function(event) {
+    event.preventDefault();
+    $('.loginModal').toggle();
   });
 }
 
-function signupModal() {
-  $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text()
-    modal.find('.modal-body input').val()
+function hideLoginModal() {
+  $('.closeLoginModal').on('click', function(event) {
+    event.preventDefault();
+    $('.loginModal').hide();
+  })
+}
+
+function showSignupModal() {
+  $('#signupBtn').on('click', function(event) {
+    event.preventDefault();
+    $('.signupModal').toggle();
   });
+}
+
+function signupJoinBtn() {
+  $('.joinButton').on('click', function(event) {
+    event.preventDefault();
+    $('.signupModal').toggle();
+  });
+}
+
+function signupMoreInfo() {
+    $('.signupModal').toggle();
+}
+
+
+function hideSignupModal() {
+  $('.closeModal').on('click', function(event) {
+    event.preventDefault();
+    $('.signupModal').hide();
+  })
 }
 
 //<------------ document.ready ------------>//
@@ -425,12 +462,17 @@ $(function() {
   switchLogInLogOut();
   learnMore();
   searchSubmit();
-  loginModal();  
-  signupModal();
+  showLoginModal();  
+  showSignupModal();
+  signupJoinBtn();
+  hideLoginModal();
+  hideSignupModal();
   setupSignUpSubmit();
+  returnHome();
   setupLogInSubmit();
   setupLogOutSubmit();
   setupShowFavorites();
+  submitAndHideUlMobile();
 });
 
 

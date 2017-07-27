@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>Capstone Project Lego</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
         <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
         <link rel="stylesheet" type="text/css" href="nav.css">
         <link rel="stylesheet" type="text/css" href="main.css">
@@ -13,112 +14,108 @@
     </head>
     <body>
         <!-- // container -->
-          <nav class="navbar-fixed-top">
-            <div class="row navbar">
-              <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 pull-left">
-                <a href="/" class="titleLink title">BrickPro</a>
-              </div>
-              <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wrapLogoSearch">
-                <form id="js-search-form">
-                  <input id="js-input" type="text" class="search_input" placeholder="Search">
-                  <span>
-                    <button class="buttonGo" type="submit">Go</button>
-                  </span>
-                </form>
-              </div>
-              <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 list">
-                <ul class="nav nav-pills pull-right">
-                  <li class="helloLogin">
-                    <p class="hello showWhenLoggedIn" style="display: none;">Hello, <span id="helloUser"></span>!</p>
-                  </li>
-                  <li>
-                    <a href="#" class="link showWhenLoggedIn" id="showFavorites" style="display: none;">Favorites</a>
-                  </li>
-                  <li>
-                    <a href="/login" data-toggle="modal" data-target="#myLoginModal" class="link showWhenLoggedOut" style="display: none;">Log In</a>
-                  </li>
-                  <li>
-                    <a href="/signup" data-toggle="modal" data-target="#exampleModal" class="link goSignup showWhenLoggedOut" style="display: none;">Sign Up</a>
-                  </li>
-                  <li>
-                    <a href="#" class="link showWhenLoggedIn" id="my_logout" style="display: none;">Log Out</a>
-                  </li>
-                </ul>
-              </div>
+        <header>
+          <nav>
+            <div class="logo">
+              <a href="#home" class="logoTitle">BrickPro</a>
             </div>
+            <div class="icon">
+              <span class="toggle">☰</span>
+            </div>
+            <ul class="listItem">
+              <li>
+                <p class="hello showWhenLoggedIn" style="display: none;">Hello, <span id="helloUser"></span>!</p>
+              </li>
+              <li>
+                <a href="#favorites" class="showWhenLoggedIn submitAndHideUl" id="showFavorites" style="display: none;">Favorites</a>
+              </li>
+              <li>
+                <a href="#login" class="showWhenLoggedOut submitAndHideUl" id="loginBtn" style="display: none;">Log In</a>
+              </li>
+              <li>
+                <a href="#signup" class="showWhenLoggedOut submitAndHideUl" id="signupBtn" style="display: none;">Sign Up</a>
+              </li>
+              <li>
+                <a href="#logout" class="showWhenLoggedIn" id="my_logout" style="display: none;">Log Out</a>
+              </li>
+            </ul>
           </nav>
-          
-          <div class="row" id="landingPage">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 landingIntro">
-              <div>
-                <p>Create your imagination with BrickPro</p>
-              </div>
-            </div>
-          </div>
-          <div class="row" id="startScroll">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div>
-                <span class="start">Learn More</span>
-              </div>
-            </div>
-          </div>
-          <div class="row" id="scroll">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <a href="#"><img src="images/arrow.png" class="scrollButton"></a>
-            </div>
-          </div>
-          <div id="explain">
-            <div class="row whatWeDo1">
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wrapwhatWeDo1">
-                <img src="images/lego.jpg" class="imgWhatWeDo1">
-                <div class="introduction1">
-                  <p class="introTitle1">What is BrickPro?</p>
-                  <p class="introduct">BrickPro is used to search for a Lego set by a set name or id. Sign up when you want to save a set you like in your favorite list.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wrapwhatWeDo2">
-                <img src="images/starwars2.jpg" class="imgWhatWeDo2">              
-                <div class="introduction2">
-                  <p class="introTitle2">Do you want retired sets?</p>
-                  <p class="introduct">You can find any Lego sets including retired items by using BrickPro and purchase them from sources we provide.</p>
-                </div>
-              </div>
-            </div>
-            <div class="row joinNow">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <p><a href="/signup" data-toggle="modal" data-target="#exampleModal" class="joinButton showWhenLoggedOut">Join Now</a></p>
-              </div>
-            </div>
-            <div class="row footer">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <p class="footerLogo">BrickPro <span class="footerBuilder">Built by Romklao Chainuwong</span><a href="https://github.com/romklao/capstone_lego" target="_blank"><img src="images/github-logo.png" class="githubLogo"></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="row" id="headerResults">
-          </div>
-          <div class="row wrap-info" id="js-show-info">
-          </div>
+        </header>
+        <form id="js-search-form">
+          <input id="js-input" type="text" class="search_input" placeholder="Search">
+          <span>
+            <button class="buttonGo" type="submit">Go</button>
+          </span>
+        </form>
         
+        <div id="landingPage">
+          <div class="landingIntro">
+            <div>
+              <p>Create your imagination with BrickPro</p>
+            </div>
+          </div>
+        </div>
+        <div id="startScroll">
+            <div>
+              <span class="start">Learn More</span>
+            </div>
+        </div>
+        <div id="scroll">
+          <div>
+              <a href="#"><img src="images/arrow.png" class="scrollButton"></a>
+          </div>
+        </div>
+        <div id="explain">
+          <div class="whatWeDo1 col-group">
+            <div class="wrapwhatWeDo1">
+              <img src="images/lego.jpg" class="imgWhatWeDo1">
+              <div class="introduction1">
+                <p class="introTitle1">What is BrickPro?</p>
+                <p class="introduct">BrickPro is used to search for a Lego set by a set name or id. Sign up when you want to save a set you like in your favorite list.</p>
+              </div>
+            </div>
+            <div class="wrapwhatWeDo2">
+              <img src="images/starwars2.jpg" class="imgWhatWeDo2">              
+              <div class="introduction2">
+                <p class="introTitle2">Do you want retired sets?</p>
+                <p class="introduct">You can find any Lego sets including retired items by using BrickPro and purchase them from sources we provide.</p>
+              </div>
+            </div>
+          </div>
+          <div class="joinNow">
+            <div>
+                <p><a href="#signup" class="joinButton showWhenLoggedOut">Join Now</a></p>
+            </div>
+          </div>
+          <div class="row footer">
+            <div>
+                <p class="footerLogo">BrickPro <span class="footerBuilder">Built by Romklao Chainuwong</span><a href="https://github.com/romklao/capstone_lego" target="_blank"><img src="images/github-logo.png" class="githubLogo"></a></p>
+            </div>
+          </div>
+        </div>
+        <div id="headerResults">
+        </div>
+        <div class="col-group wrap-info" id="js-show-info">
+        </div>
+      
 
         <!-- Log in Modal  --> 
-
-        <div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel">
-          <div class="modal-dialog" role="document">
+        <div class="loginModal" id="myLoginModal">
+          <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header login_header login_modal">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="login_header">
+                <button type="button" class="close"><span class="closeLoginModal">X</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Fill out the information below to log in</h4>
               </div>
               <div class="modal-body">
                 <form id="my_login_form">
                   <div class="form-group">
-                    <input type="email" id="login_email" class="form-control login_input" name="email" placeholder="Email address">
-                    <input type="password" id="login_password" class="form-control login_input" placeholder="Password">
+                    <input type="email" id="login_email" class="login_input" name="email" placeholder="Email address" value="rom@gmail.com">
+                    <input type="password" id="login_password" class="login_input" placeholder="Password" value="123">
                   </div>
                   <div class="modal-footer footer_signup">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info signup_button">Submit</button>
+                    <button type="button" class="close_button closeLoginModal">Close</button>
+                    <button type="submit" class="signup_button">Submit</button>
                   </div>
                 </form>
               </div>
@@ -128,11 +125,11 @@
 
         <!-- Sign up Modal -->
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="signupModal">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header signup_header signup_modal">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="signup_header">
+                <button type="button" class="close"><span class="closeModal">X</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Fill out the information below to create an account</h4>
               </div>
               <div class="modal-body">
@@ -143,8 +140,8 @@
                     <input type="password" id="signup_password" class="form-control signup_input" placeholder="Password">
                   </div>
                   <div class="modal-footer footer_signup">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info signup_button">Submit</button>
+                    <button type="button" class="close_button closeModal">Close</button>
+                    <button type="submit" class="signup_button">Submit</button>
                   </div>
                 </form>
               </div>
