@@ -1,27 +1,5 @@
 'use strict'
 
-$('.toggle').click(function() {
-    $('nav ul').slideToggle();
-});
-
-$(window).resize(function() {
-    if ($(window).width() > 780) {
-        $('nav ul').removeAttr('style');
-    }
-});
-
-function submitAndHideUlMobile() {
-  $('.submitAndHideUl').on('click', function(event) {
-    event.preventDefault();
-    $('nav ul').hide();
-
-    if ($(window).width() > 780) {
-        $('nav ul').removeAttr('style');
-    }
-  })
-}
-
-
 //<------------ Click to go to whatWeDo element that shows how the app works ---------->//
 
 function learnMore() {
@@ -401,6 +379,7 @@ function returnHome() {
     $('#js-show-info').html('');
   });
 }
+
 //<---------------- Show and hide elements when log in or log out -------------->//
 
 function switchLogInLogOut() {
@@ -453,6 +432,29 @@ function hideSignupModal() {
   $('.closeModal').on('click', function(event) {
     event.preventDefault();
     $('.signupModal').hide();
+  })
+}
+
+//<-------------- function show and hide nav bar when ckick for mobile responsive ------------>
+
+$('.toggle').click(function() {
+    $('nav ul').slideToggle();
+});
+
+$(window).resize(function() {
+    if ($(window).width() > 780) {
+        $('nav ul').removeAttr('style');
+    }
+});
+
+function submitAndHideUlMobile() {
+  $('.submitAndHideUl').on('click', function(event) {
+    event.preventDefault();
+    $('nav ul').hide();
+
+    if ($(window).width() > 780) {
+        $('nav ul').removeAttr('style');
+    }
   })
 }
 
