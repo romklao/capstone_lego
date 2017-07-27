@@ -240,10 +240,10 @@ table {
 
 #explain {
     width: 100%;
-    background-color: #081e38; 
+    background-color: #071021; /*#121E2A #071021 081e38*/
     position: relative;
     margin: 0 auto;
-    padding-bottom: 3%;
+    padding-bottom: 3.2%;
     padding-top: 4%;
     left: 0;
 }
@@ -258,11 +258,11 @@ table {
 
 .introduction1, .introduction2 {
     font-size: 18px;
-    background-color: #0b2349;
+    background-color: #121E2A; /*#0b2349*/
     color: #eaeff2;
     width: 93%;
     border: 1px solid #F5F5F7;
-    padding-bottom: 11%;
+    padding-bottom: 50px;
 }
 
 .introduction1 {
@@ -270,7 +270,7 @@ table {
 }
 
 .introduction2 {
-    padding-bottom: 10.74%;
+    padding-bottom: 49px;
 }
 
 .introTitle1, .introTitle2 {
@@ -323,10 +323,10 @@ table {
     text-decoration: none;
     background-color: #13a9ef;
     color: white;
-    font-size: 16px;
+    font-size: 17px;
     border: 1px solid #13a9ef;
     border-radius: 3px;
-    padding: 10px 26px 10px 26px;
+    padding: 6px 12px 6px 12px;
 }
 
 a:hover, a:active, a:visited, a:focus  {
@@ -343,7 +343,7 @@ a:hover, a:active, a:visited, a:focus  {
     position: absolute;
     width: 100%;
     min-height:55px;
-    background-color: #0b2349; /*#09224f 0b2349 05193a*/
+    background-color: #121E2A; /*#09224f 0b2349 05193a*/
     top: 100%;
     bottom: 0;
     right: 0;
