@@ -121,7 +121,7 @@ input:-webkit-autofill {
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 20%;
+  top: 23%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -281,14 +281,15 @@ input:-webkit-autofill {
     position: relative;
     top: -4px;
     display: none;
+    background-color: #111;
+    border-top: 1px solid #444;
   }
-  .listItem li, .listItem form {
+  .listItem li {
     margin: 0;
     padding: 0;
     text-align: left;
     display: block;
     float: none;
-    background-color: #18202D;
   }
   .listItem li {
     margin: 0;
