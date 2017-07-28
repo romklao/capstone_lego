@@ -399,13 +399,15 @@ function showLoginModal() {
   $('#loginBtn').on('click', function(event) {
     event.preventDefault();
     $('.loginModal').toggle();
+    $('.overlay').toggle();
   });
 }
 
 function hideLoginModal() {
   $('.closeLoginModal').on('click', function(event) {
     event.preventDefault();
-    $('.loginModal').hide();
+    $('.loginModal').toggle();
+    $('.overlay').toggle();
   })
 }
 
@@ -413,6 +415,7 @@ function showSignupModal() {
   $('#signupBtn').on('click', function(event) {
     event.preventDefault();
     $('.signupModal').toggle();
+    $('.overlaySignup').toggle();
   });
 }
 
@@ -420,11 +423,13 @@ function signupJoinBtn() {
   $('.joinButton').on('click', function(event) {
     event.preventDefault();
     $('.signupModal').toggle();
+    $('.overlaySignup').toggle();
   });
 }
 
 function signupMoreInfo() {
     $('.signupModal').toggle();
+    $('.overlaySignup').show();
 }
 
 
@@ -432,6 +437,7 @@ function hideSignupModal() {
   $('.closeModal').on('click', function(event) {
     event.preventDefault();
     $('.signupModal').hide();
+    $('.overlaySignup').hide();
   })
 }
 

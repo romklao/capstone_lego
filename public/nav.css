@@ -174,11 +174,10 @@ input:-webkit-autofill {
   background-color: white;
   border-radius: 3px;
   padding: 10px 40px;
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.7);
   height: 240px;
-  top: 48%;
+  top: 49%;
   left: 50%;
-  z-index: 200;
+  z-index: 1001;
   background: rgba(255,255,255,0.96);
 
   transform: translateX(-50%) translateY(-50%);
@@ -186,6 +185,19 @@ input:-webkit-autofill {
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -o-transform: translateX(-50%) translateY(-50%);
+}
+
+.overlay, .overlaySignup{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    margin: 0;
+    z-index: 1000;
+    background:rgba(0,0,0,.5)
 }
 
 .signupModal {
