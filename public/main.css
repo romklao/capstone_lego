@@ -430,8 +430,9 @@ a:hover, a:active, a:visited, a:focus  {
     .removeFavorite {
         left: 67%;
     }
-    .listItem > li > p {
+    .listItem {
         padding-top: 15px;
+        padding-bottom: 15px;
     }
 }
 
