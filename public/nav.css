@@ -44,14 +44,10 @@ nav {
   padding: 8px;
 }
 
-.listItem > li, .listItem > form {
+.listItem > li {
   float: left;
   font-size: 18px;
   transition: all .7s ease-in-out;
-}
-
-.listItem > form {
-  margin: 0 20px;
 }
 
 .listItem > li {
@@ -291,14 +287,15 @@ input:-webkit-autofill {
     padding: 0;
     right: 0;
     position: relative;
-    top: -4px;
+    top: -0.5px;
     display: none;
     background-color: #111;
-    border-top: 1px solid #444;
+  }
+  .listItem {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .listItem li {
-    margin: 0;
-    padding: 0;
     text-align: left;
     display: block;
     float: none;
