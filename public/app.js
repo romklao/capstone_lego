@@ -59,6 +59,8 @@ function onLogOut(callback) {
 function setupSignUpSubmit() {
   $('#signup_form').submit(function(event) {
     event.preventDefault();
+    $('body').addClass('waiting');
+
     var username_signup = $(this).find('#signup_username').val();
     var email_signup = $(this).find('#signup_email').val();
     var password_signup = $(this).find('#signup_password').val();
@@ -76,6 +78,8 @@ function setupSignUpSubmit() {
 function setupLogInSubmit() {
   $('#my_login_form').submit(function(event) {
     event.preventDefault();
+    $('body').addClass('waiting');
+
     var email_login = $(this).find('#login_email').val();
     var password_login = $(this).find('#login_password').val();
 
@@ -359,6 +363,7 @@ function setupShowFavorites() {
     $('#landingPage').hide();
     $('.footer').hide();
     $('#js-show-info').html('');
+    $('body').addClass('waiting');
 
     var favoriteHeader = '<h1>Your favorite items</h1>'
 
@@ -366,6 +371,7 @@ function setupShowFavorites() {
         favorites.forEach(function(favorite) {
           getDataFromApiBySetId(favorite.set_num, function(item) {
 
+            $('body').removeClass('waiting');
             $('#headerResults').html(favoriteHeader);
             displaySearchItems([item], favorites);
           });
