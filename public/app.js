@@ -293,6 +293,7 @@ function searchSubmit() {
     $('.footer').hide();
     $('#landingPage').hide();
     $('#js-show-info').html('')
+    $('body').addClass('waiting');
 
     var resultError = '';
     var jsInput = $('#js-input');
@@ -303,6 +304,7 @@ function searchSubmit() {
     $('#headerResults').html('');
     
     if (!jsInput.val()) {
+      $('body').removeClass('waiting');
       $('#headerResults').html('');
 
       resultError +=  '<div class="error">' +
@@ -315,6 +317,7 @@ function searchSubmit() {
 
         getDataFromApiBySetName(search_text, function (data) {
           if (data && data.results.length) {
+            $('body').removeClass('waiting');
             $('#headerResults').html(header);
 
             displaySearchItems(data.results, favorites);
@@ -322,6 +325,7 @@ function searchSubmit() {
           else {
             getDataFromApiBySetId(search_text, function (item) {
               if(item) {
+                $('body').removeClass('waiting');
                 $('#headerResult').html(header);
 
                 displaySearchItems([item], favorites);
@@ -332,6 +336,7 @@ function searchSubmit() {
                                   '<p class="errMsg">No results!</p>' +
                                 '</div>';
                 $('#headerResults').html(resultError);
+                 $('body').removeClass('waiting');
               }
             });
           }

@@ -11,6 +11,10 @@ html, body {
     padding: 0px;
 } 
 
+body.waiting * {
+    cursor: progress;
+}
+
 #landingPage {
     background: url('images/car.jpg');
     background-repeat: no-repeat;
