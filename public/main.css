@@ -42,14 +42,14 @@ body.waiting * {
 }
 
 .landingIntro {
-    top: 29%;
+    top: 31%;
     font-size: 30px;
     left: 49.5%;
 }
 
 .loginSignupBtn {
     position: absolute;
-    top: 39%;
+    top: 41%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -67,7 +67,7 @@ body.waiting * {
 }
 
 #loginBtn, #signupBtn, #showFavorites, #my_logout {
-    border: 1px solid white;
+    border: 1px solid lightgrey;
     padding: 5px 15px;
     margin-left: 4px;
     margin-right: 4px;

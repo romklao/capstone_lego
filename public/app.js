@@ -303,6 +303,8 @@ function searchSubmit() {
     $('#landingPage').hide();
     $('#js-show-info').html('')
     $('body').addClass('waiting');
+    $('.overlaySearchForm').hide();
+
 
     var resultError = '';
     var jsInput = $('#js-input');
@@ -448,12 +450,18 @@ function signupMoreInfo() {
     $('.overlaySignup').show();
 }
 
-
 function hideSignupModal() {
   $('.closeModal').on('click', function(event) {
     event.preventDefault();
     $('.signupModal').hide();
     $('.overlaySignup').hide();
+  })
+}
+
+function showSearchForm() {
+  $('#iconSearch').on('click', function(event) {
+    event.preventDefault();
+    $('.overlaySearchForm').fadeIn();
   })
 }
 
@@ -497,6 +505,7 @@ $(function() {
   setupLogOutSubmit();
   setupShowFavorites();
   submitAndHideUlMobile();
+  showSearchForm();
 });
 
 

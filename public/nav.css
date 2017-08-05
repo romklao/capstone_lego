@@ -32,7 +32,7 @@ nav {
 
 .logoTitle {
   font-weight: normal;
-  font-size: 25px;
+  font-size: 29px;
   margin-left: 20px;
   color: white; /*#02BCCE;*/
 }
@@ -60,9 +60,52 @@ nav {
 }
 
 .listItem > li > p {
-  padding: 0 10px;
+  padding: 0 20px;
   color: white;
   font-size: 19px;
+}
+
+#iconSearch {
+  float: right;
+  width: 28px;
+  margin-right: 30px;
+  margin-top: 5px;
+}
+
+#iconSearch:hover {
+  transition: 0.5s ease;
+  transform: scale(1.2);
+  cursor: pointer; 
+}
+
+.overlaySearchForm {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 1000;
+/*  background:rgba(0,0,0,.6)
+*/}
+
+.iconSearchForm2 {
+  width: 40px;
+}
+
+.iconSearchForm2:hover {
+  cursor: pointer;
+}
+
+
+
+
+.buttonGo {
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 ::-webkit-input-placeholder {  /*Chrome/Opera/Safari */
@@ -82,7 +125,7 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
-.buttonGo {
+/*.buttonGo {
   background-color: #13a9ef;
   border: 1px solid #13a9ef;
   padding: 5px 11px 7px 11px;
@@ -102,7 +145,7 @@ input:-webkit-autofill {
 .buttonGo:focus {
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);  
 }
-
+*/
 
 .signup_button {
   background-color: #1847a5;
@@ -113,7 +156,7 @@ input:-webkit-autofill {
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 23%;
+  top: 40%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -123,24 +166,19 @@ input:-webkit-autofill {
 }
 
 .search_input {
-  width: 200px;
-  height: 31px;
-  border: 1px solid #13a9ef;
-  border-radius: 2px;
-  padding-top: 4px;
-  padding-bottom: 6px;
-  padding-left: 10px;
+  width: 70%;
+  border: 1px solid lightgray;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   margin: 0 auto;
-  font-size: 14px;
-  background-color: white;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  font-size: 20px;
 }
 
 .search_input:focus {
-  width: 300px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 .icon {
@@ -167,7 +205,7 @@ input:-webkit-autofill {
   border-radius: 3px;
   padding: 10px 40px;
   height: 240px;
-  top: 49%;
+  top: 40%;
   left: 50%;
   z-index: 1001;
   background: rgba(255,255,255,0.96);
