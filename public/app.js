@@ -71,6 +71,7 @@ function setupSignUpSubmit() {
         window.location = '/';
       }
     });
+    $('body').removeClass('waiting');
     $('.signup_input').val('');
   });
 }
@@ -85,6 +86,7 @@ function setupLogInSubmit() {
 
     onLogIn(email_login, password_login, function(user) {
     });
+    $('body').removeClass('waiting');
     $('.login_input').val('');
   });
 }
