@@ -10,19 +10,19 @@
 }
 
 header {
-  position: fixed;
+  position: absolute;
   width: 100%; 
   z-index: 100; 
   margin: 0;
   padding: 0;
-  top: 0;
+  top: 2%;
 }
 
 nav {
   height: 55px;
-  background-color: #111;
-  border-bottom: 1px solid #555;
-}
+  background-color: transparent; /*#111*/
+/*  border-bottom: 1px solid #555;
+*/}
 
 .logo {
   padding: 14px 18px 0 18px;
@@ -34,39 +34,35 @@ nav {
   font-weight: normal;
   font-size: 25px;
   margin-left: 20px;
-  color: white;
+  color: white; /*#02BCCE;*/
+}
+
+.logoTitle:hover {
+  color: #02BCCE;
 }
 
 .listItem {
   position: absolute;
-  top: 6.5%;
-  right: 1%;
-  padding: 8px;
+  top: 10%;
+  left: 34%;
+  padding: 15px;
 }
 
 .listItem > li {
   float: left;
-  font-size: 18px;
+  font-size: 17px;
   transition: all .7s ease-in-out;
 }
 
-.listItem > li {
-  padding: 0;
-  margin-top: 5px;
-}
-
 .listItem > li > a {
-  color: #EEE;
+  color: white;
   padding: 10px;
 }
 
 .listItem > li > p {
   padding: 0 10px;
-  color: #EEE;
-}
-
-.listItem li a:hover {
-  color: #13a9ef;
+  color: white;
+  font-size: 19px;
 }
 
 ::-webkit-input-placeholder {  /*Chrome/Opera/Safari */
@@ -189,11 +185,11 @@ input:-webkit-autofill {
     height: 100%;
     background: black;
     position: fixed;
-    top: 55px;
+    top: 0;
     left: 0;
     margin: 0;
     z-index: 1000;
-    background:rgba(0,0,0,.5)
+    background:rgba(0,0,0,.6)
 }
 
 .signupModal {

@@ -95,10 +95,12 @@ function setupLogInSubmit() {
 function setupLogOutSubmit() {
   $('#my_logout').click(function(event) {
     event.preventDefault();
+    $('body').addClass('waiting');
     localStorage.removeItem('authHeaders');
 
       onLogOut(function() {
     });
+    $('body').addClass('waiting');
   });
 }
 

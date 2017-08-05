@@ -42,9 +42,71 @@ body.waiting * {
 }
 
 .landingIntro {
-    top: 40%;
+    top: 29%;
     font-size: 30px;
     left: 49.5%;
+}
+
+.loginSignupBtn {
+    position: absolute;
+    top: 39%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+}
+
+.loginSignupBtn > li {
+    float: left;
+}
+
+.loginSignupBtn > li > a {
+    color: white;
+}
+
+#loginBtn, #signupBtn, #showFavorites, #my_logout {
+    border: 1px solid white;
+    padding: 5px 15px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 25px;
+    font-size: 17px;
+}
+
+#loginBtn {
+    padding: 5px 20px;
+    background-color: #02BCCE;
+}
+
+#loginBtn:hover {
+    background-color: #154896;
+}
+
+#signupBtn {
+    background-color: #92A400;
+}
+
+#signupBtn:hover {
+    background-color: #474f00;
+}
+
+#showFavorites {
+    padding: 5px 10px; 
+    background-color: #02BCCE;    
+}
+
+#showFavorites:hover {
+    background-color: #154896;
+}
+
+#my_logout {
+    background-color: #92A400;
+}
+
+#my_logout:hover {
+    background-color: #474f00;
 }
 
 #scroll {
@@ -60,6 +122,7 @@ body.waiting * {
 .scrollButton:hover {
     transition: 0.5s ease;
     transform: scale(1.25);
+    transition: all .7s ease-in-out;
 }
 
 #startScroll {
@@ -325,12 +388,12 @@ table {
 
 .joinButton {
     text-decoration: none;
-    background-color: #13a9ef;
+    background-color: #02BCCE;
     color: white;
     font-size: 17px;
-    border: 1px solid #13a9ef;
-    border-radius: 3px;
-    padding: 6px 12px 6px 12px;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 6px 15px 6px 15px;
 }
 
 a:hover, a:active, a:visited, a:focus  {
@@ -339,7 +402,6 @@ a:hover, a:active, a:visited, a:focus  {
 
 .joinButton:hover {
     background-color: #154896;
-    border: 1px solid #154896;
     color: white;
 }
 
