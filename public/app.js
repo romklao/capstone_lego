@@ -67,11 +67,11 @@ function setupSignUpSubmit() {
 
     onSignUp(username_signup, email_signup, password_signup, function(res) {
       if (res.message) {
+        console.log('message');
       } else {
         window.location = '/';
       }
     });
-    $('body').removeClass('waiting');
     $('.signup_input').val('');
   });
 }
@@ -86,7 +86,6 @@ function setupLogInSubmit() {
 
     onLogIn(email_login, password_login, function(user) {
     });
-    $('body').removeClass('waiting');
     $('.login_input').val('');
   });
 }
