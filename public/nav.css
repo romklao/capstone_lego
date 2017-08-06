@@ -118,7 +118,7 @@ input:-webkit-autofill {
 
 #loginBtn {
     padding: 5px 20px;
-    background-color: #02BCCE;
+    background-color: #02BCCE; /*#02BCCE 008FA9*/
 }
 
 #loginBtn:hover, #showFavorites:hover {
@@ -126,11 +126,11 @@ input:-webkit-autofill {
 }
 
 #signupBtn {
-    background-color: #92A400;
+    background-color: #02BCCE; /*92A400*/
 }
 
 #signupBtn:hover, #my_logout:hover {
-    background-color: #474f00;
+    background-color: #154896;
 }
 
 #showFavorites {
@@ -139,7 +139,7 @@ input:-webkit-autofill {
 }
 
 #my_logout {
-    background-color: #92A400;
+    background-color: #02BCCE;
 }
 
 #iconSearch {
@@ -337,8 +337,8 @@ input:-webkit-autofill {
 }
 
 .signup_button {
-  border: 1px solid #92A400;
-  background-color: #92A400;
+  border: 1px solid #02BCCE;
+  background-color: #02BCCE;
   padding: 5px 6px;  
 }
 
@@ -349,8 +349,8 @@ input:-webkit-autofill {
 }
 
 .signup_button:hover {
-  border: 1px solid #474f00;
-  background-color: #474f00;
+  border: 1px solid #154896;
+  background-color: #154896;
 }
 
 @media (max-width: 775px) {
