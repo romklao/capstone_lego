@@ -238,6 +238,7 @@ input:-webkit-autofill {
   border: none; 
   margin: 0 auto;
   font-size: 60px;
+  text-align: center;
 }
 
 .search_input:focus {

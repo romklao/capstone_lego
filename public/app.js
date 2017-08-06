@@ -298,11 +298,11 @@ function searchSubmit() {
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
 
+    $('body').addClass('waiting');
     $('#explain').hide();
     $('.footer').hide();
     $('#landingPage').hide();
     $('#js-show-info').html('')
-    $('body').addClass('waiting');
     $('.overlaySearchForm').hide();
 
 
@@ -328,17 +328,16 @@ function searchSubmit() {
 
         getDataFromApiBySetName(search_text, function (data) {
           if (data && data.results.length) {
-            $('body').removeClass('waiting');
             $('#headerResults').html(header);
 
             displaySearchItems(data.results, favorites);
+            $('body').removeClass('waiting');
           } 
           else {
             getDataFromApiBySetId(search_text, function (item) {
               if(item) {
-                $('body').removeClass('waiting');
-                $('nav').addClass('loggedInNav');
                 $('#headerResult').html(header);
+                $('body').removeClass('waiting');
 
                 displaySearchItems([item], favorites);
               } else {
@@ -473,28 +472,6 @@ function hideSearchForm() {
   })
 }
 
-//<-------------- function show and hide nav bar when ckick for mobile responsive ------------>
-
-// $('.toggle').click(function() {
-//     $('nav ul').slideToggle();
-// });
-
-// $(window).resize(function() {
-//     if ($(window).width() > 780) {
-//         $('nav ul').removeAttr('style');
-//     }
-// });
-
-// function submitAndHideUlMobile() {
-//   $('.submitAndHideUl').on('click', function(event) {
-//     event.preventDefault();
-//     $('nav ul').hide();
-
-//     if ($(window).width() > 780) {
-//         $('nav ul').removeAttr('style');
-//     }
-//   })
-// }
 
 //<------------ document.ready ------------>//
 
