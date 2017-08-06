@@ -10,6 +10,17 @@ function learnMore() {
   });
 }
 
+var $body = $("body");
+
+$(document).on({
+    ajaxStart: function() { 
+      $body.addClass("loading");
+    },
+    ajaxStop: function() { 
+      $body.removeClass("loading");
+    }
+});
+
 //<---------- Sign up, log in and log out that communicate with server ---------->//
 
 function onSignUp(username, email, password, callback) {
@@ -59,7 +70,6 @@ function onLogOut(callback) {
 function setupSignUpSubmit() {
   $('#signup_form').submit(function(event) {
     event.preventDefault();
-    $('body').addClass('waiting');
 
     var username_signup = $(this).find('#signup_username').val();
     var email_signup = $(this).find('#signup_email').val();
@@ -72,7 +82,6 @@ function setupSignUpSubmit() {
         window.location = '/';
       }
     });
-    $('body').removeClass('waiting');
     $('.signup_input').val('');
   });
 }
@@ -80,14 +89,12 @@ function setupSignUpSubmit() {
 function setupLogInSubmit() {
   $('#my_login_form').submit(function(event) {
     event.preventDefault();
-    $('body').addClass('waiting');
 
     var email_login = $(this).find('#login_email').val();
     var password_login = $(this).find('#login_password').val();
 
     onLogIn(email_login, password_login, function(user) {
     });
-    $('body').removeClass('waiting');
     $('.login_input').val('');
   });
 }
@@ -95,12 +102,10 @@ function setupLogInSubmit() {
 function setupLogOutSubmit() {
   $('#my_logout').click(function(event) {
     event.preventDefault();
-    $('body').addClass('waiting');
     localStorage.removeItem('authHeaders');
 
       onLogOut(function() {
     });
-    $('body').removeClass('waiting');
   });
 }
 
@@ -298,7 +303,6 @@ function searchSubmit() {
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
 
-    $('body').addClass('waiting');
     $('#explain').hide();
     $('.footer').hide();
     $('#landingPage').hide();
@@ -331,13 +335,11 @@ function searchSubmit() {
             $('#headerResults').html(header);
 
             displaySearchItems(data.results, favorites);
-            $('body').removeClass('waiting');
           } 
           else {
             getDataFromApiBySetId(search_text, function (item) {
               if(item) {
                 $('#headerResult').html(header);
-                $('body').removeClass('waiting');
 
                 displaySearchItems([item], favorites);
               } else {
@@ -347,7 +349,6 @@ function searchSubmit() {
                                   '<p class="errMsg">No results!</p>' +
                                 '</div>';
                 $('#headerResults').html(resultError);
-                $('body').removeClass('waiting');
               }
             });
           }
