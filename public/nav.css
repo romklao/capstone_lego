@@ -10,22 +10,26 @@
 }
 
 header {
-  position: absolute;
+  position: fixed;
   width: 100%; 
   z-index: 100; 
   margin: 0;
   padding: 0;
-  top: 2%;
+  top: 0;
 }
 
-nav {
+.loggedInNav {
   height: 55px;
-  background-color: transparent; /*#111*/
-/*  border-bottom: 1px solid #555;
-*/}
+  background-color: #111;
+  border-bottom: 1px solid #555;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
 
 .logo {
-  padding: 14px 18px 0 18px;
+  padding: 12px 18px 14px 18px;
   width: auto;
   float: left;
 }
@@ -43,9 +47,16 @@ nav {
 
 .listItem {
   position: absolute;
-  top: 10%;
+  top: 23%;
   left: 34%;
   padding: 15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
 }
 
 .listItem > li {
@@ -59,17 +70,87 @@ nav {
   padding: 10px;
 }
 
-.listItem > li > p {
+.hello {
+  position: absolute;
+  left: 50%;
+  top: 45%;
   padding: 0 20px;
   color: white;
   font-size: 19px;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.hello > p {
+  font-size: 23px;
+}
+
+.loginSignupBtn {
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+}
+
+.loginSignupBtn > li {
+    float: left;
+}
+
+.loginSignupBtn > li > a {
+    color: white;
+}
+
+#loginBtn, #signupBtn, #showFavorites, #my_logout {
+    border: 1px solid lightgrey;
+    padding: 5px 15px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 25px;
+    font-size: 17px;
+}
+
+#loginBtn {
+    padding: 5px 20px;
+    background-color: #02BCCE;
+}
+
+#loginBtn:hover {
+    background-color: #154896;
+}
+
+#signupBtn {
+    background-color: #92A400;
+}
+
+#signupBtn:hover {
+    background-color: #474f00;
+}
+
+#showFavorites {
+    padding: 5px 10px; 
+    background-color: #02BCCE;    
+}
+
+#showFavorites:hover {
+    background-color: #154896;
+}
+
+#my_logout {
+    background-color: #92A400;
+}
+
+#my_logout:hover {
+    background-color: #474f00;
 }
 
 #iconSearch {
   float: right;
   width: 28px;
-  margin-right: 30px;
-  margin-top: 5px;
+  margin-right: 35px;
+  margin-top: 14px;
 }
 
 #iconSearch:hover {
@@ -88,19 +169,18 @@ nav {
   left: 0;
   margin: 0;
   z-index: 1000;
-/*  background:rgba(0,0,0,.6)
-*/}
+}
 
 .iconSearchForm2 {
   width: 40px;
 }
 
 .iconSearchForm2:hover {
+  transition: 0.5s ease;
+  transform: scale(1.2);
   cursor: pointer;
+
 }
-
-
-
 
 .buttonGo {
   padding: 0;
@@ -109,7 +189,7 @@ nav {
 }
 
 ::-webkit-input-placeholder {  /*Chrome/Opera/Safari */
-  color: #5879aa;
+  color: lightgrey;
 }
 ::-moz-placeholder {  /*Firefox 19+ */
   color: white;
@@ -121,32 +201,6 @@ nav {
   color: white;
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-}
-
-/*.buttonGo {
-  background-color: #13a9ef;
-  border: 1px solid #13a9ef;
-  padding: 5px 11px 7px 11px;
-  color: white;
-  font-size: 14px;
-  border-radius: 3px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-}
-
-.buttonGo:hover {
-  background-color: #154896;
-  border-color: #154896;
-  color: white;
-  cursor: pointer;
-}
-
-.buttonGo:focus {
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);  
-}
-*/
-
 .signup_button {
   background-color: #1847a5;
   color: white; 
@@ -156,7 +210,7 @@ input:-webkit-autofill {
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -165,14 +219,29 @@ input:-webkit-autofill {
     -o-transform: translateX(-50%) translateY(-50%);
 }
 
+.closeForm {
+  position: absolute;
+  right: 3%;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  font-size: 60px;
+  margin: 40px 40px 0 0;
+  font-weight: normal;
+  color: lightgrey;
+}
+
+.closeForm:hover {
+  color: grey;
+}
+
 .search_input {
   width: 70%;
-  border: 1px solid lightgray;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: none; 
   margin: 0 auto;
-  font-size: 20px;
+  font-size: 60px;
 }
 
 .search_input:focus {

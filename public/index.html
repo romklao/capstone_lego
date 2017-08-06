@@ -14,17 +14,21 @@
     <body>
         <!-- // container -->
         <header>
-          <nav>
+          <nav class="loggedInNav">
             <div class="logo">
               <a href="#home" class="logoTitle">BrickPro</a>
+            </div>
+            <div class="hello">
+              <p class="showWhenLoggedIn" style="display: none;">Hello, <span id="helloUser"></span>!</p>
             </div>
             <div class="icon">
               <span class="toggle">☰</span>
             </div>
-            <ul class="listItem">
-              <li>
-                <p class="hello showWhenLoggedIn" style="display: none;">Hello, <span id="helloUser"></span>!</p>
-              </li>
+            <a href="#"><img src="images/search.png" id="iconSearch"></a>
+          </nav>
+        </header>
+        
+        <ul class="listItem">
               <li>
                 <a href="#favorites" class="showWhenLoggedIn submitAndHideUl" id="showFavorites" style="display: none;">Favorites</a>
               </li>
@@ -32,17 +36,7 @@
                 <a href="#logout" class="showWhenLoggedIn" id="my_logout" style="display: none;">Log Out</a>
               </li>
             </ul>
-            <a href="#"><img src="images/search.png" id="iconSearch"></a>
-          </nav>
-        </header>
-        
-        <div id="landingPage">
-          <div class="landingIntro">
-            <div>
-              <p>Create your imagination with BrickPro</p>
-            </div>
-          </div>
-          <ul class="loginSignupBtn">
+        <ul class="loginSignupBtn">
             <li>
               <a href="#login" class="showWhenLoggedOut submitAndHideUl" id="loginBtn" style="display: none;">Log In</a>
             </li>
@@ -50,6 +44,12 @@
               <a href="#signup" class="showWhenLoggedOut submitAndHideUl" id="signupBtn" style="display: none;">Sign Up</a>
             </li>
           </ul>
+        <div id="landingPage">
+          <div class="landingIntro">
+            <div>
+              <p>Create your imagination with BrickPro</p>
+            </div>
+          </div>
         </div>
         <div id="startScroll">
             <div>
@@ -97,8 +97,9 @@
         <!-- Search Form -->
 
         <div class="overlaySearchForm">
+          <button type="button" class="closeForm"><span class="closeSearchForm">&times;</span></button>
           <form id="js-search-form">
-            <input id="js-input" type="text" class="search_input">
+            <input id="js-input" type="text" placeholder="Enter a lego set Id or name" class="search_input">
             <span>
               <button class="buttonGo" type="submit"><img src="images/search1.png" class="iconSearchForm2"></button>
             </span>
@@ -112,7 +113,7 @@
             <div class="modal-content">
               <div class="login_header">
                 <button type="button" class="close"><span class="closeLoginModal">X</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Fill out the information below to log in</h4>
+                <h4 class="modal-title">Fill out the information below to log in</h4>
               </div>
               <div class="modal-body">
                 <form id="my_login_form">

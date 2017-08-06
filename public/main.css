@@ -15,6 +15,18 @@ body.waiting * {
     cursor: progress;
 }
 
+button:focus {
+    outline:0;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
 #landingPage {
     background: url('images/car.jpg');
     background-repeat: no-repeat;
@@ -42,71 +54,9 @@ body.waiting * {
 }
 
 .landingIntro {
-    top: 31%;
+    top: 36%;
     font-size: 30px;
     left: 49.5%;
-}
-
-.loginSignupBtn {
-    position: absolute;
-    top: 41%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-}
-
-.loginSignupBtn > li {
-    float: left;
-}
-
-.loginSignupBtn > li > a {
-    color: white;
-}
-
-#loginBtn, #signupBtn, #showFavorites, #my_logout {
-    border: 1px solid lightgrey;
-    padding: 5px 15px;
-    margin-left: 4px;
-    margin-right: 4px;
-    border-radius: 25px;
-    font-size: 17px;
-}
-
-#loginBtn {
-    padding: 5px 20px;
-    background-color: #02BCCE;
-}
-
-#loginBtn:hover {
-    background-color: #154896;
-}
-
-#signupBtn {
-    background-color: #92A400;
-}
-
-#signupBtn:hover {
-    background-color: #474f00;
-}
-
-#showFavorites {
-    padding: 5px 10px; 
-    background-color: #02BCCE;    
-}
-
-#showFavorites:hover {
-    background-color: #154896;
-}
-
-#my_logout {
-    background-color: #92A400;
-}
-
-#my_logout:hover {
-    background-color: #474f00;
 }
 
 #scroll {
@@ -130,10 +80,6 @@ body.waiting * {
     left: 51.2%;
     font-size: 17px;
     padding-right: 3px;
-}
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
 #headerResults {

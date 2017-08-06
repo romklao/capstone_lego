@@ -100,7 +100,7 @@ function setupLogOutSubmit() {
 
       onLogOut(function() {
     });
-    $('body').addClass('waiting');
+    $('body').removeClass('waiting');
   });
 }
 
@@ -337,6 +337,7 @@ function searchSubmit() {
             getDataFromApiBySetId(search_text, function (item) {
               if(item) {
                 $('body').removeClass('waiting');
+                $('nav').addClass('loggedInNav');
                 $('#headerResult').html(header);
 
                 displaySearchItems([item], favorites);
@@ -347,7 +348,7 @@ function searchSubmit() {
                                   '<p class="errMsg">No results!</p>' +
                                 '</div>';
                 $('#headerResults').html(resultError);
-                 $('body').removeClass('waiting');
+                $('body').removeClass('waiting');
               }
             });
           }
@@ -465,6 +466,13 @@ function showSearchForm() {
   })
 }
 
+function hideSearchForm() {
+  $('.closeForm').on('click', function(event) {
+    event.preventDefault();
+    $('.overlaySearchForm').fadeOut();
+  })
+}
+
 //<-------------- function show and hide nav bar when ckick for mobile responsive ------------>
 
 $('.toggle').click(function() {
@@ -506,6 +514,7 @@ $(function() {
   setupShowFavorites();
   submitAndHideUlMobile();
   showSearchForm();
+  hideSearchForm();
 });
 
 
