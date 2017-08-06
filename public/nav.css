@@ -108,7 +108,7 @@ input:-webkit-autofill {
 }
 
 #loginBtn, #signupBtn, #showFavorites, #my_logout {
-    border: 1px solid lightgrey;
+    border: 1px solid white;
     width: 91px;
     padding: 5px 15px;
     margin-left: 4px;
