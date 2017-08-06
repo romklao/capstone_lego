@@ -392,9 +392,10 @@ a:hover, a:active, a:visited, a:focus  {
 
 @media (max-width: 780px) {
     .landingIntro {
-        font-size: 28px;
+        font-size: 22px;
         width: 100%;
         left: 50%;
+        top: 38%;
     }
     .imageDiv {
         height: auto;
