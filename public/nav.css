@@ -378,8 +378,9 @@ input:-webkit-autofill {
     font-size: 25px;
   }
   .search_input {
-    margin-top: 15px;
-    margin-left: 15px;
+    width: 80%;
+    font-size: 25px;
+    padding-left: 10px;
   }
   .hello {
     left: 55%    
@@ -390,6 +391,14 @@ input:-webkit-autofill {
   }
   #iconSearch {
     margin-right: 20px; 
+  }
+  .iconSearchForm2 {
+    width: 30px;
+  }
+  .closeForm {
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 50px;
   }
 
 }

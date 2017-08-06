@@ -512,7 +512,6 @@ $(function() {
   setupLogInSubmit();
   setupLogOutSubmit();
   setupShowFavorites();
-  submitAndHideUlMobile();
   showSearchForm();
   hideSearchForm();
 });
