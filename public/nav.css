@@ -206,6 +206,8 @@ input:-webkit-autofill {
 #js-search-form {
   position: absolute;
   text-align: center;
+  padding: 0;
+  margin: 0; 
   width: 100%;
   top: 45%;
   left: 50%;
@@ -214,6 +216,13 @@ input:-webkit-autofill {
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -o-transform: translateX(-50%) translateY(-50%);
+}
+
+#js-search-form > div {
+    width: 75%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 15px 0;
 }
 
 .closeForm {
@@ -235,7 +244,7 @@ input:-webkit-autofill {
 }
 
 .search_input {
-  width: 70%;
+  width: 90%;
   border: none; 
   margin: 0 auto;
   font-size: 60px;
@@ -357,7 +366,17 @@ input:-webkit-autofill {
 
 @media (max-width: 775px) {
   #js-search-form {
-    left: 48%;
+    width: 100%;
+    left: 50%;
+  }
+  #js-search-form > div {
+    padding: 0;
+    width: 95%;
+    padding: 20px 5px;
+  }
+  .search_input {
+    width: 85%;
+    font-size: 26px;
   }
   .loginModal, .signupModal {
     top: 48%;
@@ -367,11 +386,6 @@ input:-webkit-autofill {
   }
   .logoTitle {
     font-size: 25px;
-  }
-  .search_input {
-    width: 80%;
-    font-size: 25px;
-    padding-left: 10px;
   }
   .hello {
     left: 55%    
@@ -384,7 +398,8 @@ input:-webkit-autofill {
     margin-right: 20px; 
   }
   .iconSearchForm2 {
-    width: 30px;
+    width: 27px;
+    margin-left: 10px;
   }
   .closeForm {
     margin-right: 20px;
