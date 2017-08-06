@@ -10,16 +10,19 @@ function learnMore() {
   });
 }
 
-var $body = $("body");
+function loading() {
 
-$(document).on({
-    ajaxStart: function() { 
-      $body.addClass("loading");
-    },
-    ajaxStop: function() { 
-      $body.removeClass("loading");
-    }
-});
+  var $body = $("body");
+
+  $(document).on({
+      ajaxStart: function() { 
+        $body.addClass("loading");
+      },
+      ajaxStop: function() { 
+        $body.removeClass("loading");
+      }
+  });
+}
 
 //<---------- Sign up, log in and log out that communicate with server ---------->//
 
@@ -492,6 +495,7 @@ $(function() {
   setupShowFavorites();
   showSearchForm();
   hideSearchForm();
+  loading();
 });
 
 
