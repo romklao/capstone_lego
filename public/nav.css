@@ -109,6 +109,7 @@ input:-webkit-autofill {
 
 #loginBtn, #signupBtn, #showFavorites, #my_logout {
     border: 1px solid lightgrey;
+    width: 91px;
     padding: 5px 15px;
     margin-left: 4px;
     margin-right: 4px;
