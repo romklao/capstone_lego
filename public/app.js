@@ -475,26 +475,26 @@ function hideSearchForm() {
 
 //<-------------- function show and hide nav bar when ckick for mobile responsive ------------>
 
-$('.toggle').click(function() {
-    $('nav ul').slideToggle();
-});
+// $('.toggle').click(function() {
+//     $('nav ul').slideToggle();
+// });
 
-$(window).resize(function() {
-    if ($(window).width() > 780) {
-        $('nav ul').removeAttr('style');
-    }
-});
+// $(window).resize(function() {
+//     if ($(window).width() > 780) {
+//         $('nav ul').removeAttr('style');
+//     }
+// });
 
-function submitAndHideUlMobile() {
-  $('.submitAndHideUl').on('click', function(event) {
-    event.preventDefault();
-    $('nav ul').hide();
+// function submitAndHideUlMobile() {
+//   $('.submitAndHideUl').on('click', function(event) {
+//     event.preventDefault();
+//     $('nav ul').hide();
 
-    if ($(window).width() > 780) {
-        $('nav ul').removeAttr('style');
-    }
-  })
-}
+//     if ($(window).width() > 780) {
+//         $('nav ul').removeAttr('style');
+//     }
+//   })
+// }
 
 //<------------ document.ready ------------>//
 

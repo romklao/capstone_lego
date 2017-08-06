@@ -45,11 +45,9 @@ input:-webkit-autofill {
   color: #02BCCE;
 }
 
-.listItem {
+.favLogoutBtn {
   position: absolute;
   top: 23%;
-  left: 34%;
-  padding: 15px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   
@@ -59,13 +57,13 @@ input:-webkit-autofill {
     -o-transform: translateX(-50%) translateY(-50%);
 }
 
-.listItem > li {
+.favLogoutBtn > li {
   float: left;
   font-size: 17px;
   transition: all .7s ease-in-out;
 }
 
-.listItem > li > a {
+.favLogoutBtn > li > a {
   color: white;
   padding: 10px;
 }
@@ -78,6 +76,11 @@ input:-webkit-autofill {
   color: white;
   font-size: 19px;
   transform: translateX(-50%) translateY(-50%);
+
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
 }
 
 .hello > p {
@@ -89,6 +92,7 @@ input:-webkit-autofill {
     top: 23%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
@@ -250,10 +254,6 @@ input:-webkit-autofill {
   border-right: none;
 }
 
-.icon {
-  display: none;
-}
-
 .toggle {
   float: right;
   margin: 20px;
@@ -371,45 +371,25 @@ input:-webkit-autofill {
   .loginModal, .signupModal {
     top: 48%;
   }
-  .icon {
-    display: block;
-    width: 100%;
-    height: 80px;
-    background-color: #111;
-    border-bottom: 1px solid #444;
-  }
   .logo {
-    padding-top: 22px;
     margin-left: -16px;
   }
   .logoTitle {
-    font-size: 30px;
-  }
-  .listItem {
-    width: 100%;
-    padding: 0;
-    right: 0;
-    position: relative;
-    top: -0.5px;
-    display: none;
-    background-color: #111;
-  }
-  .listItem {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .listItem li {
-    text-align: left;
-    display: block;
-    float: none;
-  }
-  .listItem li {
-    margin: 0;
-    padding: 5px 0 5px 15px;
+    font-size: 25px;
   }
   .search_input {
     margin-top: 15px;
     margin-left: 15px;
+  }
+  .hello {
+    left: 55%    
+  }
+  .hello > p {
+    font-size: 19px;
+    margin-top: 5px;
+  }
+  #iconSearch {
+    margin-right: 20px; 
   }
 
 }
