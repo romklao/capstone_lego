@@ -26,11 +26,14 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/sweetalert-master'));
 
-// const http = require("http");
+// Put function setInterval so it will wake the app every 5 mins 
+// so heroku could not put the app into sleep state
 
-// setInterval(function() {
-//     http.get("http://<your app name>.herokuapp.com");
-// }, 300000); // every 5 minutes (300000)
+const http = require('http');
+
+setInterval(function() {
+    http.get('https://blooming-thicket-55082.herokuapp.com');
+}, 300000); // every 5 minutes (300000)
 
 ///////// Rebrickable API imported packages ////////
 
