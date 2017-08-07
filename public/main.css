@@ -90,8 +90,15 @@ input:-webkit-autofill {
     left: 49.5%;
 }
 
+#startScroll {
+    top: 88%;
+    left: 51.2%;
+    font-size: 17px;
+    padding-right: 3px;
+}
+
 #scroll {
-    top: 93%;
+    margin-top: 25px; 
     left: 51%;
 }
 
@@ -104,13 +111,6 @@ input:-webkit-autofill {
     transition: 0.5s ease;
     transform: scale(1.25);
     transition: all .7s ease-in-out;
-}
-
-#startScroll {
-    top: 88%;
-    left: 51.2%;
-    font-size: 17px;
-    padding-right: 3px;
 }
 
 #headerResults {
