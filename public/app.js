@@ -309,6 +309,7 @@ function searchSubmit() {
     $('#explain').hide();
     $('.footer').hide();
     $('#landingPage').hide();
+    $('#startScroll').hide();
     $('#js-show-info').html('')
     $('.overlaySearchForm').hide();
 
