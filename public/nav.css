@@ -9,19 +9,15 @@
   font-family: Roboto;
 }
 
-header {
+.loggedInNav {
+  height: 55px;
+  background-color: #111;
+  border-bottom: 1px solid #555;
   position: fixed;
   width: 100%; 
   z-index: 10; 
   margin: 0;
   padding: 0;
-  top: 0;
-}
-
-.loggedInNav {
-  height: 55px;
-  background-color: #111;
-  border-bottom: 1px solid #555;
 }
 
 input:-webkit-autofill {
@@ -365,6 +361,9 @@ input:-webkit-autofill {
 }
 
 @media (max-width: 775px) {
+  .loggedInNav {
+    height: 75px;
+  }
   #js-search-form {
     width: 100%;
     left: 50%;
