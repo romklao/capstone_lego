@@ -373,7 +373,7 @@ input:-webkit-autofill {
   }
   .search_input {
     width: 85%;
-    font-size: 26px;
+    font-size: 21px;
   }
   .loginModal, .signupModal {
     top: 48%;
