@@ -27,8 +27,8 @@ html, body {
     height:     100%;
     width:      100%;
     background: white /*rgba( 255, 255, 255, 1 )*/ 
-                url('images/ajax-loader2.gif')/*url('http://i.stack.imgur.com/FhHRx.gif')*/ 
-                50% 50% 
+                url('images/loading1.gif')/*url('http://i.stack.imgur.com/FhHRx.gif')*/ 
+                50% 40% 
                 no-repeat;
 }
 
