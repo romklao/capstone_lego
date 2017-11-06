@@ -86,6 +86,7 @@ function setupSignUpSubmit() {
       }
     });
     $('.signup_input').val('');
+    $('.overlaySignup').hide();
   });
 }
 
@@ -99,6 +100,7 @@ function setupLogInSubmit() {
     onLogIn(email_login, password_login, function(user) {
     });
     $('.login_input').val('');
+    $('#myLoginModal').hide();
   });
 }
 
@@ -283,6 +285,8 @@ function renderItem(item, favorites) {
       resultElement +=  '<td class="tdTable tdLeft">More Details</td>' +
                       `<td class="tdTable tdRight"><a class="rebrickLink" href="${item.set_url}" target="_blank"><img class="rebrickIcon" src="/images/rebrick_image.jpg"> Rebrickable</a></td>`
     }
+  } else {
+    resultElement += '<p>No results!</p>'
   }
     resultElement += '</table>';
     resultElement += '</div>';
@@ -434,6 +438,14 @@ function hideLoginModal() {
   })
 }
 
+// function hideLogin() {
+//   $('.login_submit').on('click', function(event) {
+//     event.preventDefault();
+//     $('.loginModal').toggle();
+//     $('.overlay').toggle();
+//   })
+// }
+
 function showSignupModal() {
   $('#signupBtn').on('click', function(event) {
     event.preventDefault();
@@ -488,6 +500,7 @@ $(function() {
   showSignupModal();
   signupJoinBtn();
   hideLoginModal();
+  // hideLogin();
   hideSignupModal();
   setupSignUpSubmit();
   returnHome();
